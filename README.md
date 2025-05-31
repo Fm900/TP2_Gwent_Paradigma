@@ -11,7 +11,7 @@ Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUB
 * **Integrante 2** - [Nahuel Brian Cruz Laurente - 103884](https://github.com/cruznahuel)
 * **Integrante 3** - [Juan Ruben Claros - 111254](https://github.com/JuanClaros15)
 * **Integrante 4** - [Carlos Franco Mendoza Coronado - 111758](https://github.com/Fm900)
-* **Integrante 5** - [..](https://github.com/)
+* **Integrante 5** - [Salvador Perez Mendoza - 110198](https://github.com/)
 
 
 Corrector: **Pablo Rodriguez Massuh**
