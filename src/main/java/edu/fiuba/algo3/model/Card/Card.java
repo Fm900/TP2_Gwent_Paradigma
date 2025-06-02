@@ -1,6 +1,6 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.model.Card;
 
-public class Card {
+public abstract class Card {
     private String name;
     private int points;
 
@@ -16,4 +16,9 @@ public class Card {
     public String getName() {
         return name;
     }
+
+    public void setPoints(int points) {
+        this.points = points;
+    }
+
 }
