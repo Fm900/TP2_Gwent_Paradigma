@@ -4,4 +4,5 @@ module edu.fiuba.algo3 {
     exports edu.fiuba.algo3;
     exports edu.fiuba.algo3.vistas;
     exports;
+    exports edu.fiuba.algo3.modelo;
 }
