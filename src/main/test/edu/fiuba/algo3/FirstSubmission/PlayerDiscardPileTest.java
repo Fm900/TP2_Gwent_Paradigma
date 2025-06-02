@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.entrega_1;
+package edu.fiuba.algo3.FirstSubmission;
 
 import edu.fiuba.algo3.modelo.*;
 import org.junit.jupiter.api.BeforeEach;
@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class PlayerPointsTest {
+public class PlayerDiscardPileTest {
 
     private Player player;
     private Card card1;
@@ -25,11 +25,9 @@ public class PlayerPointsTest {
     }
 
     @Test
-    void testPlayCardAddsPointsToPlayer() {
-        assertEquals(0, player.getTotalPoints());
-
-        Card playedCard = player.playCard(0);
-        assertEquals(5, player.getTotalPoints());
-        assertEquals("Warrior", playedCard.getName());
+    void testCardGoesToDiscardPile() {
+        player.playCard(0);
+        assertEquals(1, player.getDiscardPile().getCards().size());
+        assertEquals("Warrior", player.getDiscardPile().getCards().get(0).getName());
     }
 }
