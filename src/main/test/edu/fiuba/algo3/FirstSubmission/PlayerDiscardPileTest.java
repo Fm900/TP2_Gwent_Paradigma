@@ -15,7 +15,7 @@ public class PlayerDiscardPileTest {
     private Board board;
 
     @BeforeEach
-    void setUp() {
+    void setUp() throws ExcessCardsHand {
         card1 = new Melee("Warrior", 5);
         Deck deck = new Deck();
         deck.addCard(card1);

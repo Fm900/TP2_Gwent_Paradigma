@@ -43,6 +43,10 @@ public class Player {
         return playedCard;
     }
 
+    public void validateDeck(){
+        this.deck.validate();
+    }
+
     public int getTotalPoints() {
         return totalPoints;
     }
