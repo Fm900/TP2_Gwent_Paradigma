@@ -56,8 +56,8 @@ public void usingSnowSpecialCard(){
 
 
 
-    assertEquals(1, board.getPlayerScore(0));
-    assertEquals(1, board.getPlayerScore(1));
+    assertEquals(1, player1.getTotalPoints(board));
+    assertEquals(1, player2.getTotalPoints(board));
 
 }
 
@@ -85,8 +85,9 @@ public void usingFogSpecialCard(){
     player1.playCard(0, board);
 
 
-    assertEquals(1, board.getPlayerScore(0));
-    assertEquals(1, board.getPlayerScore(1));
+
+    assertEquals(1, player1.getTotalPoints(board));
+    assertEquals(1, player2.getTotalPoints(board));
 
 }
 
@@ -115,8 +116,8 @@ public void usingTorrentialRainSpecialCard(){
     player1.playCard(0, board);
 
 
-    assertEquals(1, board.getPlayerScore(0));
-    assertEquals(1, board.getPlayerScore(1));
+    assertEquals(1, player1.getTotalPoints(board));
+    assertEquals(1, player2.getTotalPoints(board));
 
 }
 
