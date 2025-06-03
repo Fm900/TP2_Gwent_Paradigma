@@ -35,8 +35,8 @@ void setUp() {
 @Test
 public void usingSnowSpecialCard(){
 
-    Melee arachas = new Melee("Arachas", 4);
-    Melee cyclops = new Melee("Cyclops", 11);
+    Melee arachas = new Melee("Arachas", 4, "Warrior");
+    Melee cyclops = new Melee("Cyclops", 11, "Warrr");
     Snow snow = new Snow("Snow");
 
     deck.addCard(arachas);
@@ -66,8 +66,8 @@ public void usingSnowSpecialCard(){
 @Test
 public void usingFogSpecialCard(){
 
-    Range albrich = new Range("Albrich", 4);
-    Range dethmold = new Range("Dethmold", 11);
+    Range albrich = new Range("Albrich", 4, "Warrior");
+    Range dethmold = new Range("Dethmold", 11, "Warr");
     Fog fog = new Fog("Fog");
 
     deck.addCard(albrich);
@@ -95,8 +95,8 @@ public void usingFogSpecialCard(){
 @Test
 public void usingTorrentialRainSpecialCard(){
 
-    Siege ballista = new Siege("Ballista", 6);
-    Siege catapult = new Siege("Catapult", 8);
+    Siege ballista = new Siege("Ballista", 6, "Warrior");
+    Siege catapult = new Siege("Catapult", 8, "Warr");
     TorrentialRain torrentialRain = new TorrentialRain("TorrentialRain");
 
 

@@ -21,7 +21,7 @@ public class CardsSufficientInHandTest {
     private Deck deckBuilder(int units, int special){
         Deck deck = new Deck();
         for (int i = 0; i < units; i++) {
-            Melee card = new Melee("Warrior", 10);
+            Melee card = new Melee("Warrior", 10, "Warrior");
             deck.addCard(card);
         }
         for (int i = 0; i < special; i++) {

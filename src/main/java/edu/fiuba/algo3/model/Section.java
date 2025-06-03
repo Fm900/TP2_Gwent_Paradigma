@@ -23,9 +23,21 @@ public class Section {
     }
 
 
-    public void addCard(Unit card) {
-        unitCards.add(card);
+    public void addCard(Unit newUnit) {
+
+        for (Unit u : unitCards) {
+            if (u.compareType(newUnit)) {
+                    newUnit.setPoints(newUnit.getPoints()*2);
+                    u.setPoints(u.getPoints()*2);
+                break;
+            }
+        }
+
+        unitCards.add(newUnit);
+
+
     }
+
 
 
     public SectionAvailable getType(){
@@ -42,7 +54,7 @@ public class Section {
     public int getScore() {
         int points = 0;
         for (Unit unit : unitCards) {
-            points = unit.getPoints();
+            points = points + unit.getPoints();
         }
         return points;
     }

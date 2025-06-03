@@ -16,7 +16,7 @@ public class PlayerPointsTest {
 
     @BeforeEach
     void setUp() {
-        card1 = new Melee("Warrior", 5);
+        card1 = new Melee("Warrior", 5, "Warrior");
         Deck deck = new Deck();
         deck.addCard(card1);
 
@@ -31,10 +31,10 @@ public class PlayerPointsTest {
 
     @Test
     void testPlayCardAddsPointsToPlayer() {
-        assertEquals(0, player.getTotalPoints());
+        assertEquals(0, player.getTotalPoints(board));
 
         Card playedCard = player.playCard(0, board);
-        assertEquals(5, player.getTotalPoints());
+        assertEquals(5, player.getTotalPoints(board));
         assertEquals("Warrior", playedCard.getName());
     }
 }

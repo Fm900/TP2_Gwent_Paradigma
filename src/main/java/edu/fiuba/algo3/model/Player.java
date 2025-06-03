@@ -52,8 +52,8 @@ public class Player {
         this.hand.validate();
     }
 
-    public int getTotalPoints() {
-        return totalPoints;
+    public int getTotalPoints(Board board) {
+        return board.getPlayerScore(id);
     }
 
     public DiscardPile getDiscardPile() {
