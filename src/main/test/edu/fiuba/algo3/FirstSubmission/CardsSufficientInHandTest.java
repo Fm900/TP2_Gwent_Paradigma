@@ -40,7 +40,7 @@ public class CardsSufficientInHandTest {
     @Test
     public void testCardsSufficientInHand(){
         Deck deck = deckBuilder(15,5);
-        Player player = new Player(deck, this.hand, this.discardPile, 0);
+        Player player = new Player(deck, this.hand, this.discardPile, 0, "Juan");
         handBuilder(10, player);
         player.validateHand();
         assertDoesNotThrow(player::validateHand);
@@ -49,7 +49,7 @@ public class CardsSufficientInHandTest {
     @Test
     public void testCardsSufficientInHand2(){
         Deck deck = deckBuilder(15,5);
-        Player player = new Player(deck, this.hand, this.discardPile, 0);
+        Player player = new Player(deck, this.hand, this.discardPile, 0, "Juan");
         handBuilder(11, player);
         assertThrows(ExcessCardsHand.class, player::validateHand);
     }

@@ -26,8 +26,8 @@ void setUp() {
      deck = new Deck();
      Hand hand = new Hand();
      DiscardPile discardPile = new DiscardPile();
-     player1 = new Player(deck, hand, discardPile, 0);
-     player2 = new Player(deck, hand, discardPile, 1);
+     player1 = new Player(deck, hand, discardPile, 0, "Juan");
+     player2 = new Player(deck, hand, discardPile, 1, "Valentin");
 }
 
 

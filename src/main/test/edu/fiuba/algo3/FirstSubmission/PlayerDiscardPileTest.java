@@ -23,7 +23,7 @@ public class PlayerDiscardPileTest {
         Hand hand = new Hand();
         DiscardPile discardPile = new DiscardPile();
 
-        player = new Player(deck, hand, discardPile,0);
+        player = new Player(deck, hand, discardPile,0, "Salva");
         player.drawCard();
     }
 

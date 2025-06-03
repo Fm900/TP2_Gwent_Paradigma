@@ -10,13 +10,15 @@ public class Player {
     private DiscardPile discardPile;
     private int totalPoints;
     private int id;
+    private String name;
 
-    public Player(Deck deck, Hand hand, DiscardPile discardPile,int id) {
+    public Player(Deck deck, Hand hand, DiscardPile discardPile,int id, String name) {
         this.deck = deck;
         this.hand = hand;
         this.discardPile = discardPile;
         this.totalPoints = 0;
         this.id = id;
+        this.name = name;
     }
 
     public void drawCard() {

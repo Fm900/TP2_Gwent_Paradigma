@@ -25,7 +25,7 @@ public class PlayerPointsTest {
 
         board = new Board();
 
-        player = new Player(deck, hand, discardPile,0);
+        player = new Player(deck, hand, discardPile,0, "Nahuel");
         player.drawCard();
     }
 
