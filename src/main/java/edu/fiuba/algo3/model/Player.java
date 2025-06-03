@@ -46,6 +46,9 @@ public class Player {
     public void validateDeck(){
         this.deck.validate();
     }
+    public void validateHand(){
+        this.hand.validate();
+    }
 
     public int getTotalPoints() {
         return totalPoints;

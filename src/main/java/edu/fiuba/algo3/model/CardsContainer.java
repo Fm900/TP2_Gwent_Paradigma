@@ -13,8 +13,8 @@ public abstract class CardsContainer {
     }
 
     public void addCard(Card card){cards.add(card);}
-    public void removeCard(Card card){
-        cards.remove(card);
+    public void removeCard(int num){
+        cards.remove(0);
     };
     public List<Card> getCards(){return cards;};
     public int size(){return cards.size();};
