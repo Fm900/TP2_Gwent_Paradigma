@@ -12,12 +12,12 @@ public class BondedCardsTest {
     @Test
     public void testBondedCardsDoublePointsDuringRound() {
 
-        Deck dummyDeck = mock(Deck.class);
+        Deck deck = new Deck();
         Hand hand = new Hand();
         DiscardPile discardPile = new DiscardPile();
         int id = 1;
 
-        Player player = new Player(dummyDeck, hand, discardPile, id, "testing");
+        Player player = new Player(deck, hand, discardPile, id, "testing");
         Board board = new Board();
 
         Card trebuchet1 = new Siege("trebuchet", 8, "catapult");

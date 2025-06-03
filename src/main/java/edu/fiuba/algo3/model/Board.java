@@ -66,6 +66,8 @@ public class Board {
         return total;
     }
 
-
+    public List<Section> getSections(int id){
+        return playerSections.get(id);
+    }
 
 }
