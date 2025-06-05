@@ -32,4 +32,6 @@ public abstract class Unit extends Card {
         return Objects.equals(otherType, type);
     }
 
+    public void bondedPoints(){ setPoints(getPoints()*2); }
+
 }

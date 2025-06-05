@@ -1,10 +1,8 @@
 package edu.fiuba.algo3.FirstSubmission;
 
 import edu.fiuba.algo3.model.*;
-import edu.fiuba.algo3.model.Card.Unit.Melee;
 import edu.fiuba.algo3.model.Card.Unit.SectionAvailable;
 import edu.fiuba.algo3.model.Card.Unit.Unit;
-import org.junit.jupiter.api.BeforeEach;
 import org.testng.annotations.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -30,10 +28,20 @@ public class CardPlayedInSectionOfBoardTest {
 
         player.playCard(0, board);
 
-        Section section = board.getSections(id).get(0);
+        Section section = null;
+
+        for (Section s : board.getSections(id)) {
+            if (s.getType() == SectionAvailable.MELEE) {
+                section = s;
+                break;
+            }
+        }
 
         assertEquals(5, section.getScore());
     }
+
+
+
     @Test
     public void testPlayerCanPlaceRangeUnitCardInCorrectSection() {
 
@@ -51,10 +59,18 @@ public class CardPlayedInSectionOfBoardTest {
 
         player.playCard(0, board);
 
-        Section section = board.getSections(id).get(1);
+        Section section = null;
+
+        for (Section s : board.getSections(id)) {
+            if (s.getType() == SectionAvailable.RANGE) {
+                section = s;
+                break;
+            }
+        }
 
         assertEquals(5, section.getScore());
     }
+
     @Test
     public void testPlayerCanPlaceSiegeUnitCardInCorrectSection() {
 
@@ -72,7 +88,14 @@ public class CardPlayedInSectionOfBoardTest {
 
         player.playCard(0, board);
 
-        Section section = board.getSections(id).get(2);
+        Section section = null;
+
+        for (Section s : board.getSections(id)) {
+            if (s.getType() == SectionAvailable.SIEGE) {
+                section = s;
+                break;
+            }
+        }
 
         assertEquals(5, section.getScore());
     }

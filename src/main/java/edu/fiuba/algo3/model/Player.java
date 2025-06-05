@@ -8,7 +8,6 @@ public class Player {
     private Deck deck;
     private Hand hand;
     private DiscardPile discardPile;
-    private int totalPoints;
     private int id;
     private String name;
 
@@ -16,7 +15,6 @@ public class Player {
         this.deck = deck;
         this.hand = hand;
         this.discardPile = discardPile;
-        this.totalPoints = 0;
         this.id = id;
         this.name = name;
     }
@@ -30,17 +28,13 @@ public class Player {
 
     public Card playCard(int index,Board board) {
         Card playedCard = hand.playCard(index);
-        totalPoints += playedCard.getPoints();
         discardPile.addCard(playedCard);
-
 
         if (playedCard instanceof Unit) {
             board.addCardToSection((Unit)playedCard, this);
         } else if (playedCard instanceof Special) {
             ((Special)playedCard).applyInBoard(board);
         }
-
-
 
         return playedCard;
     }
