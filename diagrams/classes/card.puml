@@ -1,0 +1,63 @@
+@startuml Diagrama de Clases
+
+skinparam monochrome true
+hide circle
+skinparam classAttributeIconSize 0
+
+title TP2 - Cards
+
+abstract class Card {
+    - name: String
+    - points: int
+    + Card(name: String, points: int)
+    + getPoints(): int
+    + getName(): String
+    + setPoints(points: int): void
+}
+
+abstract class Unit {
+    - section: SectionAvailable
+    + Unit(name: String, points: int, section: SectionAvailable)
+    + reducePointsTo(value: int): void
+    + getSection(): SectionAvailable
+}
+
+interface Special <<interface>> {
+    + Special(name: String)
+    + applyInBoard(board: Board): void
+}
+
+class Melee
+class Range
+class Siege 
+
+abstract class Climate
+class MoraleBoost
+class ScorchedEarth
+
+interface Modifier <<interface>>
+class Legendary
+class Doctor
+class Agile
+class LinkedCards
+class Spies
+class BaseValueSum
+
+Card <|-- Unit
+Card <|-- Special
+Modifier <|.. Legendary
+Modifier <|.. Doctor 
+Modifier <|.. Agile 
+Modifier <|.. LinkedCards
+Modifier <|.. Spies 
+Modifier <|.. BaseValueSum
+
+Unit --> "0..1" Modifier
+Unit <|-- Melee
+Unit <|-- Range
+Unit <|-- Siege
+Special <|.. Climate
+Special <|.. MoraleBoost
+Special <|.. ScorchedEarth
+
+@enduml
