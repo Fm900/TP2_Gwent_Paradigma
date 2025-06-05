@@ -17,8 +17,8 @@ public class Section {
 
         for (Unit u : unitCards) {
             if (u.compareType(newUnit)) {
-                    newUnit.bondedPoints();
-                    u.bondedPoints();
+                newUnit.bondCard(u);
+                u.bondCard(newUnit);
                 break;
             }
         }
