@@ -1,6 +1,8 @@
 package edu.fiuba.algo3.FirstSubmission;
 
 import edu.fiuba.algo3.model.*;
+import edu.fiuba.algo3.model.Card.Modifier.Basic;
+import edu.fiuba.algo3.model.Card.Modifier.Modifier;
 import edu.fiuba.algo3.model.Card.Unit.SectionAvailable;
 import edu.fiuba.algo3.model.Card.Unit.Unit;
 import org.testng.annotations.Test;
@@ -21,8 +23,9 @@ public class CardPlayedInSectionOfBoardTest {
 
         Player player = new Player(deck, hand, discardPile, id, "testing");
         Board board = new Board();
+        Modifier modifier = new Basic();
 
-        Unit soldier = new Unit("Juan", 5, SectionAvailable.MELEE, "warrior") {};
+        Unit soldier = new Unit("Juan", 5, SectionAvailable.MELEE, "warrior", modifier) {};
 
         hand.addCard(soldier);
 
@@ -52,8 +55,9 @@ public class CardPlayedInSectionOfBoardTest {
 
         Player player = new Player(deck, hand, discardPile, id, "testing");
         Board board = new Board();
+        Modifier modifier = new Basic();
 
-        Unit soldier = new Unit("Juan", 5, SectionAvailable.RANGE, "warrior") {};
+        Unit soldier = new Unit("Juan", 5, SectionAvailable.RANGE, "warrior", modifier) {};
 
         hand.addCard(soldier);
 
@@ -81,8 +85,9 @@ public class CardPlayedInSectionOfBoardTest {
 
         Player player = new Player(deck, hand, discardPile, id, "testing");
         Board board = new Board();
+        Modifier modifier = new Basic();
 
-        Unit soldier = new Unit("Juan", 5, SectionAvailable.SIEGE, "warrior") {};
+        Unit soldier = new Unit("Juan", 5, SectionAvailable.SIEGE, "warrior", modifier) {};
 
         hand.addCard(soldier);
 

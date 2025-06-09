@@ -2,6 +2,7 @@ package edu.fiuba.algo3.model.Card.Unit;
 
 
 import edu.fiuba.algo3.model.Card.Card;
+import edu.fiuba.algo3.model.Card.Modifier.Modifier;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,12 +13,14 @@ public abstract class Unit extends Card {
     protected SectionAvailable section;
     private String type;
     private List<Unit> bondedCards;
+    private Modifier modifier;
 
-    public Unit(String name, int points, SectionAvailable section, String type) {
+    public Unit(String name, int points, SectionAvailable section, String type, Modifier modifier) {
         super(name, points);
         this.section = section;
         this.type = type;
         this.bondedCards = new ArrayList<>();
+        this.modifier = modifier;
     }
 
     public void reducePointsTo(int pointReduce) {

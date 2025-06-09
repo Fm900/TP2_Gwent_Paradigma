@@ -1,6 +1,8 @@
 package edu.fiuba.algo3.FirstSubmission;
 
 import edu.fiuba.algo3.model.*;
+import edu.fiuba.algo3.model.Card.Modifier.Basic;
+import edu.fiuba.algo3.model.Card.Modifier.Modifier;
 import edu.fiuba.algo3.model.Card.Special.Fog;
 import edu.fiuba.algo3.model.Card.Special.Snow;
 import edu.fiuba.algo3.model.Card.Special.TorrentialRain;
@@ -35,8 +37,8 @@ void setUp() {
 @Test
 public void usingSnowSpecialCard(){
 
-    Melee arachas = new Melee("Arachas", 4, "Warrior");
-    Melee cyclops = new Melee("Cyclops", 11, "Warrr");
+    Melee arachas = new Melee("Arachas", 4, "Warrior", new Basic());
+    Melee cyclops = new Melee("Cyclops", 11, "Warrr", new Basic());
     Snow snow = new Snow("Snow");
 
     deck.addCard(arachas);
@@ -66,8 +68,8 @@ public void usingSnowSpecialCard(){
 @Test
 public void usingFogSpecialCard(){
 
-    Range albrich = new Range("Albrich", 4, "Warrior");
-    Range dethmold = new Range("Dethmold", 11, "Warr");
+    Range albrich = new Range("Albrich", 4, "Warrior", new Basic());
+    Range dethmold = new Range("Dethmold", 11, "Warr", new Basic());
     Fog fog = new Fog("Fog");
 
     deck.addCard(albrich);
@@ -96,8 +98,8 @@ public void usingFogSpecialCard(){
 @Test
 public void usingTorrentialRainSpecialCard(){
 
-    Siege ballista = new Siege("Ballista", 6, "Warrior");
-    Siege catapult = new Siege("Catapult", 8, "Warr");
+    Siege ballista = new Siege("Ballista", 6, "Warrior", new Basic());
+    Siege catapult = new Siege("Catapult", 8, "Warr", new Basic());
     TorrentialRain torrentialRain = new TorrentialRain("TorrentialRain");
 
 
