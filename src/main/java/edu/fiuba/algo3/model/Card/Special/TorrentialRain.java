@@ -2,17 +2,19 @@ package edu.fiuba.algo3.model.Card.Special;
 
 
 import edu.fiuba.algo3.model.Board;
-import edu.fiuba.algo3.model.Card.Unit.SectionAvailable;
+import edu.fiuba.algo3.model.Section.Section;
+import edu.fiuba.algo3.model.Section.SiegeField;
 
-public class TorrentialRain extends Special{
+public class TorrentialRain extends Climate{
+
 
     public TorrentialRain(String name) {
         super(name);
     }
 
     @Override
-    public void applyInBoard(Board board) {
-        board.climateEffect(SectionAvailable.SIEGE);
+    protected Section selectedSection(Board board) {
+        return null;
     }
 
 

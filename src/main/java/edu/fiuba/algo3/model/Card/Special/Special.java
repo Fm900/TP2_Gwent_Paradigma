@@ -11,4 +11,9 @@ public abstract class Special extends Card {
     }
 
     public abstract void applyInBoard(Board board);
+
+    @Override
+    public void playCard(Board board) {
+        applyInBoard(board);
+    }
 }

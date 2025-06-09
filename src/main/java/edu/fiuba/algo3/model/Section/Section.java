@@ -1,15 +1,13 @@
-package edu.fiuba.algo3.model;
-import edu.fiuba.algo3.model.Card.Unit.SectionAvailable;
+package edu.fiuba.algo3.model.Section;
 import edu.fiuba.algo3.model.Card.Unit.Unit;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Section {
-    private SectionAvailable sectionAvailable;
+public abstract class Section implements acceptCard{
+
     private List<Unit> unitCards;
 
-    public Section(SectionAvailable sectionAvailable) {
-        this.sectionAvailable = sectionAvailable;
+    public Section() {
         this.unitCards = new ArrayList<>();
     }
 
@@ -26,9 +24,6 @@ public class Section {
         unitCards.add(newUnit);
     }
 
-    public SectionAvailable getType(){
-        return sectionAvailable;
-    }
 
     public void applyClimateEffect(){
         for (Unit unit : unitCards) {

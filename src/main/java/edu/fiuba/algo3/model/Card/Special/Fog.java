@@ -2,17 +2,20 @@ package edu.fiuba.algo3.model.Card.Special;
 
 
 import edu.fiuba.algo3.model.Board;
-import edu.fiuba.algo3.model.Card.Unit.SectionAvailable;
+import edu.fiuba.algo3.model.Section.MeleeField;
+import edu.fiuba.algo3.model.Section.Section;
 
-public class Fog extends Special{
+public class Fog extends Climate{
+
 
     public Fog(String name) {
         super(name);
     }
 
     @Override
-    public void applyInBoard(Board board) {
-        board.climateEffect(SectionAvailable.RANGE);
+    protected Section selectedSection(Board board) {
+        return null;
     }
+
 
 }

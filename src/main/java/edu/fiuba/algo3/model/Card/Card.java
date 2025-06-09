@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.model.Card;
 
+import edu.fiuba.algo3.model.Board;
+
 public abstract class Card {
     private String name;
     private int points;
@@ -17,8 +19,6 @@ public abstract class Card {
         return name;
     }
 
-    public void setPoints(int points) {
-        this.points = points;
-    }
+    public abstract void playCard(Board board);
 
 }
