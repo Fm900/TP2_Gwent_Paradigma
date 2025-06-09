@@ -5,7 +5,7 @@ import edu.fiuba.algo3.model.Score;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Section implements acceptCard{
+public abstract class Section {
 
     private List<Unit> unitCards;
 
@@ -16,6 +16,8 @@ public abstract class Section implements acceptCard{
     public void addCard(Unit newUnit) {
         unitCards.add(newUnit);
     }
+
+
 
 
     public void applyClimateEffect(){

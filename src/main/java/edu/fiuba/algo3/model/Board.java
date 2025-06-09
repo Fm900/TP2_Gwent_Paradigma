@@ -1,50 +1,49 @@
 package edu.fiuba.algo3.model;
-
-import edu.fiuba.algo3.model.Card.Unit.SectionAvailable;
 import edu.fiuba.algo3.model.Card.Unit.Unit;
-
+import edu.fiuba.algo3.model.Section.PlayerField;
+import edu.fiuba.algo3.model.Section.Section;
 
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class Board {
 
-    private List<List<Section>> playerSections;
+    private PlayerField playerField1 = new PlayerField();
+    private PlayerField playerField2 = new PlayerField();
+    private HashMap<Player, PlayerField> playerFields;
 
-    public Board() {
-
-        this.playerSections = new ArrayList<>();
-        playerSections.add(createSections());
-        playerSections.add(createSections());
-
-    }
+    public Board(Player player1, Player player2) {
 
 
-    private List<Section> createSections() {
+        playerFields = new HashMap<>();
 
-
-
-    }
-
-    public void climateEffect(SectionAvailable sectionType) {
+        playerFields.put(player1, playerField1);
+        playerFields.put(player2, playerField2);
 
     }
 
 
-    public void addCardToSection(Unit card, Player player) {
 
-
-
+    public void addCardToPlayerField(Unit card, Player player) {
+        PlayerField playerField = getPlayerField(player);
+        playerField.addCardInSection(card);
     }
 
 
-    public int getPlayerScore(int playerId) {
-
+    public Score getPlayerScore(Player player) {
+        PlayerField playerField = getPlayerField(player);
+        return  playerField.getSectionsScore();
     }
 
-    public List<Section> getSections(int id){
-        return playerSections.get(id);
+    public List<Section> getSections(Player player) {
+        PlayerField playerField = getPlayerField(player);
+        return playerField.getAllSections();
+    }
+
+    private PlayerField getPlayerField(Player player) {
+        return playerFields.get(player);
     }
 
 }

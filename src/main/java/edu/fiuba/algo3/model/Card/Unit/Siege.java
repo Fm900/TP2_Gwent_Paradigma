@@ -2,6 +2,7 @@ package edu.fiuba.algo3.model.Card.Unit;
 
 import edu.fiuba.algo3.model.Card.Modifier.Modifier;
 import edu.fiuba.algo3.model.Score;
+import edu.fiuba.algo3.model.Section.PlayerField;
 
 public class Siege extends Unit {
 
@@ -10,6 +11,10 @@ public class Siege extends Unit {
     }
 
 
+    @Override
+    public void playIn(PlayerField playerField) {
+        playerField.getSiegeSection().addCard(this);
+    }
 
 
 

@@ -2,7 +2,6 @@ package edu.fiuba.algo3.FirstSubmission;
 
 import edu.fiuba.algo3.model.*;
 import edu.fiuba.algo3.model.Card.Modifier.Basic;
-import edu.fiuba.algo3.model.Card.Modifier.Modifier;
 import edu.fiuba.algo3.model.Card.Special.Fog;
 import edu.fiuba.algo3.model.Card.Special.Snow;
 import edu.fiuba.algo3.model.Card.Special.TorrentialRain;
@@ -16,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 
-public class test07VerifyingWeatherCardAfecctsCorrespondingCardScore {
+public class usingWeatherCards {
 
     private Deck deck;
     private Player player1;

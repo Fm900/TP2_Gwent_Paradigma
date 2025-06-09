@@ -4,6 +4,8 @@ package edu.fiuba.algo3.model.Card.Unit;
 import edu.fiuba.algo3.model.Card.Card;
 import edu.fiuba.algo3.model.Card.Modifier.Modifier;
 import edu.fiuba.algo3.model.Score;
+import edu.fiuba.algo3.model.Section.PlayerField;
+import edu.fiuba.algo3.model.Section.Section;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,5 +38,10 @@ public abstract class Unit extends Card {
     public boolean sameType(String otherType){
         return Objects.equals(otherType, type);
     }
+
+
+
+
+    public abstract void playIn(PlayerField playerField);
 
 }

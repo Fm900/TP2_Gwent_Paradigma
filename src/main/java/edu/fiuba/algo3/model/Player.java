@@ -30,7 +30,7 @@ public class Player {
         discardPile.addCard(playedCard);
 
         if (playedCard instanceof Unit) {
-            board.addCardToSection((Unit) playedCard, this);
+            board.addCardToPlayerField((Unit) playedCard, this);
         } else if (playedCard instanceof Special) {
             ((Special) playedCard).applyInBoard(board);
         }

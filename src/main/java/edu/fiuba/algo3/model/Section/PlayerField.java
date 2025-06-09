@@ -1,5 +1,8 @@
 package edu.fiuba.algo3.model.Section;
 
+import edu.fiuba.algo3.model.Card.Unit.Unit;
+import edu.fiuba.algo3.model.Score;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,11 +42,29 @@ public class PlayerField {
     }
 
 
+    public void addCardInSection(Unit unit){
+        unit.playIn(this);
+    }
+
+
+
+
+    public Score getSectionsScore(){
+
+        List<Section> sections = getAllSections();
+        Score totalScore = new Score(0);
+
+        for (Section section : sections) {
+            totalScore = totalScore.add(section.getScore());
+        }
+
+
+        return totalScore;
+    }
+
 
 
 
 
 }
 
-
-//
