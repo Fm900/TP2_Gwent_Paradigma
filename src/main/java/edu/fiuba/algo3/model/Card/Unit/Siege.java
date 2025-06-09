@@ -1,9 +1,12 @@
 package edu.fiuba.algo3.model.Card.Unit;
 
+import edu.fiuba.algo3.model.Card.Modifier.Modifier;
+import edu.fiuba.algo3.model.Score;
+
 public class Siege extends Unit {
 
-    public Siege(String name, int points, String type) {
-        super(name, points, SectionAvailable.SIEGE, type);
+    public Siege(String name, Score score, String type, Modifier modifier) {
+        super(name, score, type, modifier);
     }
 
 

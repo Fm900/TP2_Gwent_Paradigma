@@ -1,10 +1,13 @@
 package edu.fiuba.algo3.model.Card.Unit;
 
+import edu.fiuba.algo3.model.Card.Modifier.Modifier;
+import edu.fiuba.algo3.model.Score;
+
 public class Range extends Unit{
 
 
-    public Range(String name, int points, String type) {
-        super(name, points, SectionAvailable.RANGE, type);
+    public Range(String name, Score score, String type, Modifier modifier) {
+        super(name, score, type, modifier);
     }
 
 

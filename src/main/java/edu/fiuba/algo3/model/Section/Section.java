@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.model.Section;
 import edu.fiuba.algo3.model.Card.Unit.Unit;
+import edu.fiuba.algo3.model.Score;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,31 +14,22 @@ public abstract class Section implements acceptCard{
     }
 
     public void addCard(Unit newUnit) {
-
-        for (Unit u : unitCards) {
-            if (u.compareType(newUnit)) {
-                newUnit.bondCard(u);
-                u.bondCard(newUnit);
-                break;
-            }
-        }
-
         unitCards.add(newUnit);
     }
 
 
     public void applyClimateEffect(){
         for (Unit unit : unitCards) {
-            unit.reducePointsTo(1);
+            unit.reducePointsTo(new Score(1));
         }
     }
 
-    public int getScore() {
-        int points = 0;
+    public Score getScore() {
+        Score score = new Score(0);
         for (Unit unit : unitCards) {
-            points = points + unit.getPoints();
+            score = score.add(unit.getScore());
         }
-        return points;
+        return score;
     }
 
 }

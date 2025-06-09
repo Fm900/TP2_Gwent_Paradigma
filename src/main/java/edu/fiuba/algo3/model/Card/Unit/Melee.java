@@ -1,11 +1,14 @@
 package edu.fiuba.algo3.model.Card.Unit;
 
+import edu.fiuba.algo3.model.Card.Modifier.Modifier;
+import edu.fiuba.algo3.model.Score;
 
 public class Melee extends Unit {
 
 
-    public Melee(String name, int points, String type) {
-        super(name, points, SectionAvailable.MELEE, type);
-
+    public Melee(String name, Score score, String type, Modifier modifier) {
+        super(name, score, type, modifier);
     }
+
 }
+

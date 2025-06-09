@@ -1,33 +1,38 @@
 package edu.fiuba.algo3.model;
 
 public class Score {
-    private int value;
+    private int dinamicValue;
+    private int initialValue;
 
     public Score(int value) {
-        this.value = value;
+        this.dinamicValue = value;
     }
 
     public Score add(Score other) {
-        return new Score(this.value + other.value);
+        return new Score(this.dinamicValue + other.dinamicValue);
     }
 
     public Score subtract(Score other) {
-        return new Score(this.value - other.value);
+        return new Score(this.dinamicValue - other.dinamicValue);
     }
 
     public Score multiply(int factor) {
-        return new Score(this.value * factor);
+        return new Score(this.dinamicValue * factor);
     }
 
     public Score divide(int divisor) {
         if (divisor == 0) {
             throw new ArithmeticException("Divide by zero");
         }
-        return new Score(this.value / divisor);
+        return new Score(this.dinamicValue / divisor);
+    }
+
+    public void returnToInitialValue() {
+        dinamicValue = initialValue;
     }
 
     public int getValue() {
-        return this.value;
+        return this.dinamicValue;
     }
 
 }
