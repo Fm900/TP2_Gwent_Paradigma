@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.FirstSubmission;
 
 import edu.fiuba.algo3.model.*;
-import edu.fiuba.algo3.model.Card.Modifier.Basic;
 import edu.fiuba.algo3.model.Card.Special.Snow;
 import edu.fiuba.algo3.model.Card.Unit.Melee;
 import org.junit.jupiter.api.BeforeEach;
@@ -16,7 +15,7 @@ public class EnoughCardsOnPlayerDeckTest {
     private Deck deckBuilder(int units, int special){
         Deck deck = new Deck();
         for (int i = 0; i < units; i++) {
-            Melee card = new Melee("Warrior", 10, "Warrior", new Basic());
+            Melee card = new Melee("Warrior", 10, "Warrior");
             deck.addCard(card);
         }
         for (int i = 0; i < special; i++) {

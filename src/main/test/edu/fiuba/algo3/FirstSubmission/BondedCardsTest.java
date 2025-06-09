@@ -2,7 +2,6 @@ package edu.fiuba.algo3.FirstSubmission;
 
 import edu.fiuba.algo3.model.*;
 import edu.fiuba.algo3.model.Card.Card;
-import edu.fiuba.algo3.model.Card.Modifier.Basic;
 import edu.fiuba.algo3.model.Card.Unit.Siege;
 import edu.fiuba.algo3.model.Card.Unit.Unit;
 import org.junit.jupiter.api.Test;
@@ -22,8 +21,8 @@ public class BondedCardsTest {
         Player player = new Player(deck, hand, discardPile, id, "testing");
         Board board = new Board();
 
-        Unit trebuchet1 = new Siege("trebuchet", 8, "catapult", new Basic());
-        Unit trebuchet2 = new Siege("trebuchete", 8, "catapult", new Basic());
+        Unit trebuchet1 = new Siege("trebuchet", 8, "catapult");
+        Unit trebuchet2 = new Siege("trebuchete", 8, "catapult");
 
         hand.addCard(trebuchet1);
         hand.addCard(trebuchet2);
@@ -45,8 +44,8 @@ public class BondedCardsTest {
         Player player = new Player(deck, hand, discardPile, id, "testing");
         Board board = new Board();
 
-        Unit trebuchet1 = new Siege("trebuchet", 8, "catapult", new Basic());
-        Unit trebuchet2 = new Siege("trebuchete", 8, "catapult", new Basic());
+        Unit trebuchet1 = new Siege("trebuchet", 8, "catapult");
+        Unit trebuchet2 = new Siege("trebuchete", 8, "catapult");
 
         hand.addCard(trebuchet1);
         hand.addCard(trebuchet2);

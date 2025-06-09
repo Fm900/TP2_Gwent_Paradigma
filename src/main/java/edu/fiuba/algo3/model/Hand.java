@@ -9,12 +9,4 @@ public class Hand extends CardsContainer{
     public Card playCard(int index) {
         return cards.remove(index);
     }
-
-    @Override
-    public void validate() {
-        if (cards.size() > MAX_CARDS) {
-            removeCard(0);
-            throw new ExcessCardsHand("Cannot add more than " + MAX_CARDS + " cards");
-        }
-    }
 }

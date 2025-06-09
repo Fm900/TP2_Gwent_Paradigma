@@ -9,6 +9,7 @@ import edu.fiuba.algo3.model.Card.Special.TorrentialRain;
 import edu.fiuba.algo3.model.Card.Unit.Melee;
 import edu.fiuba.algo3.model.Card.Unit.Range;
 import edu.fiuba.algo3.model.Card.Unit.Siege;
+import edu.fiuba.algo3.model.Deck.Deck;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -25,11 +26,11 @@ public class test07VerifyingWeatherCardAfecctsCorrespondingCardScore {
 @BeforeEach
 void setUp() {
      board = new Board();
-     deck = new Deck();
+     deck = new Deck("Monsters");
      Hand hand = new Hand();
      DiscardPile discardPile = new DiscardPile();
-     player1 = new Player(deck, hand, discardPile, 0, "Juan");
-     player2 = new Player(deck, hand, discardPile, 1, "Valentin");
+     player1 = new Player(deck, hand, discardPile, "Juan");
+     player2 = new Player(deck, hand, discardPile, "Valentin");
 }
 
 

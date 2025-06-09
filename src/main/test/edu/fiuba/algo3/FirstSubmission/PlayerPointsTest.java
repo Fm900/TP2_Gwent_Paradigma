@@ -2,7 +2,6 @@ package edu.fiuba.algo3.FirstSubmission;
 
 import edu.fiuba.algo3.model.*;
 import edu.fiuba.algo3.model.Card.Card;
-import edu.fiuba.algo3.model.Card.Modifier.Basic;
 import edu.fiuba.algo3.model.Card.Unit.Melee;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -17,7 +16,7 @@ public class PlayerPointsTest {
 
     @BeforeEach
     void setUp() {
-        card1 = new Melee("Warrior", 5, "Warrior", new Basic());
+        card1 = new Melee("Warrior", 5, "Warrior");
         Deck deck = new Deck();
         deck.addCard(card1);
 

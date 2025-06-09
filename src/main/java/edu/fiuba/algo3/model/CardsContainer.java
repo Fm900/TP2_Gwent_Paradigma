@@ -18,7 +18,6 @@ public abstract class CardsContainer {
     };
     public List<Card> getCards(){return cards;};
     public int size(){return cards.size();};
-    public abstract void validate();
 
 
 }

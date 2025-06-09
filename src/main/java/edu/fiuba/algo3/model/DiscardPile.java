@@ -6,7 +6,4 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DiscardPile extends CardsContainer{
-    @Override
-    public void validate() {
-    }
 }

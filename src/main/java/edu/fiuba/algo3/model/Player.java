@@ -3,19 +3,18 @@ package edu.fiuba.algo3.model;
 import edu.fiuba.algo3.model.Card.Card;
 import edu.fiuba.algo3.model.Card.Special.Special;
 import edu.fiuba.algo3.model.Card.Unit.Unit;
+import edu.fiuba.algo3.model.Deck.Deck;
 
 public class Player {
     private Deck deck;
     private Hand hand;
     private DiscardPile discardPile;
-    private int id;
     private String name;
 
-    public Player(Deck deck, Hand hand, DiscardPile discardPile,int id, String name) {
+    public Player(Deck deck, Hand hand, DiscardPile discardPile, String name) {
         this.deck = deck;
         this.hand = hand;
         this.discardPile = discardPile;
-        this.id = id;
         this.name = name;
     }
 
@@ -26,34 +25,20 @@ public class Player {
         }
     }
 
-    public Card playCard(int index,Board board) {
+    public Card playCard(int index, Board board) {
         Card playedCard = hand.playCard(index);
         discardPile.addCard(playedCard);
 
         if (playedCard instanceof Unit) {
-            board.addCardToSection((Unit)playedCard, this);
+            board.addCardToSection((Unit) playedCard, this);
         } else if (playedCard instanceof Special) {
-            ((Special)playedCard).applyInBoard(board);
+            ((Special) playedCard).applyInBoard(board);
         }
 
         return playedCard;
     }
 
-    public void validateDeck(){
-        this.deck.validate();
-    }
-    public void validateHand(){
-        this.hand.validate();
-    }
-
-    public int getTotalPoints(Board board) {
-        return board.getPlayerScore(id);
-    }
-
     public DiscardPile getDiscardPile() {
         return discardPile;
     }
-
-
-    public int getId() {return id; }
 }

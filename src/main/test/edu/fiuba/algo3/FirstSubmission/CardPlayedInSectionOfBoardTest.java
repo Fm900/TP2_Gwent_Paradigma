@@ -5,6 +5,7 @@ import edu.fiuba.algo3.model.Card.Modifier.Basic;
 import edu.fiuba.algo3.model.Card.Modifier.Modifier;
 import edu.fiuba.algo3.model.Card.Unit.SectionAvailable;
 import edu.fiuba.algo3.model.Card.Unit.Unit;
+import edu.fiuba.algo3.model.Deck.Deck;
 import org.testng.annotations.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -16,12 +17,12 @@ public class CardPlayedInSectionOfBoardTest {
     @Test
     public void testPlayerCanPlaceMeleeUnitCardInCorrectSection() {
 
-        Deck deck = new Deck();
+        Deck deck = new Deck("Monster");
         Hand hand = new Hand();
         DiscardPile discardPile = new DiscardPile();
         int id = 1;
 
-        Player player = new Player(deck, hand, discardPile, id, "testing");
+        Player player = new Player(deck, hand, discardPile, "testing");
         Board board = new Board();
         Modifier modifier = new Basic();
 
@@ -48,12 +49,12 @@ public class CardPlayedInSectionOfBoardTest {
     @Test
     public void testPlayerCanPlaceRangeUnitCardInCorrectSection() {
 
-        Deck deck = new Deck();
+        Deck deck = new Deck("Monster");
         Hand hand = new Hand();
         DiscardPile discardPile = new DiscardPile();
         int id = 1;
 
-        Player player = new Player(deck, hand, discardPile, id, "testing");
+        Player player = new Player(deck, hand, discardPile, "testing");
         Board board = new Board();
         Modifier modifier = new Basic();
 
@@ -78,12 +79,12 @@ public class CardPlayedInSectionOfBoardTest {
     @Test
     public void testPlayerCanPlaceSiegeUnitCardInCorrectSection() {
 
-        Deck deck = new Deck();
+        Deck deck = new Deck("Monster");
         Hand hand = new Hand();
         DiscardPile discardPile = new DiscardPile();
         int id = 1;
 
-        Player player = new Player(deck, hand, discardPile, id, "testing");
+        Player player = new Player(deck, hand, discardPile, "testing");
         Board board = new Board();
         Modifier modifier = new Basic();
 
