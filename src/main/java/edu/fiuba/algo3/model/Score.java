@@ -8,8 +8,13 @@ public class Score {
         this.dinamicValue = value;
     }
 
-    public Score add(Score other) {
+    public Score addScore(Score other) {
         return new Score(this.dinamicValue + other.dinamicValue);
+    }
+
+    public Score add(int score){
+        dinamicValue += score;
+        return new Score(dinamicValue);
     }
 
     public Score subtract(Score other) {
@@ -35,4 +40,7 @@ public class Score {
         return this.dinamicValue;
     }
 
+    public boolean equals(Score other) {
+        return(dinamicValue == other.getValue());
+    }
 }

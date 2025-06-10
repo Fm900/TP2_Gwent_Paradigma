@@ -14,21 +14,25 @@ import java.util.Objects;
 public abstract class Unit extends Card {
 
     private String type;
-    private Score score;
+    private int score;
     private Modifier modifier;
 
-    public Unit(String name, Score score, String type, Modifier modifier) {
+    public Unit(String name, int score, String type, Modifier modifier) {
         super(name);
         this.type = type;
         this.score = score;
         this.modifier = modifier;
     }
-    public Score getScore(){
+    public int getScore(){
         return score;
     }
 
-    public void reducePointsTo(Score scoreReduce) {
-        score.subtract(scoreReduce);
+    public void reduceScore(int scoreReduce) {
+        score -= scoreReduce;
+    }
+
+    public void addScore(int scoreAdd) {
+        score += scoreAdd;
     }
 
     public boolean compareType(Unit otherUnit){
@@ -39,9 +43,9 @@ public abstract class Unit extends Card {
         return Objects.equals(otherType, type);
     }
 
-
-
-
     public abstract void playIn(PlayerField playerField);
 
+    public Modifier getModifier() {
+        return modifier;
+    }
 }

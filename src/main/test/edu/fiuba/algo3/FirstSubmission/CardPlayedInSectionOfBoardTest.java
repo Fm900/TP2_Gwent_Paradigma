@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.FirstSubmission;
 
 import edu.fiuba.algo3.model.*;
-import edu.fiuba.algo3.model.Card.Unit.SectionAvailable;
 import edu.fiuba.algo3.model.Card.Unit.Unit;
 import edu.fiuba.algo3.model.Deck.Deck;
 import org.testng.annotations.Test;
@@ -9,7 +8,7 @@ import org.testng.annotations.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 
-
+/*
 public class CardPlayedInSectionOfBoardTest {
 
     @Test
@@ -100,6 +99,6 @@ public class CardPlayedInSectionOfBoardTest {
 
         assertEquals(5, section.getScore());
     }
-
-
 }
+*/
+

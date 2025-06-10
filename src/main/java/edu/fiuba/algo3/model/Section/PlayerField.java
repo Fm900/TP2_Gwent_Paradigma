@@ -41,13 +41,9 @@ public class PlayerField {
         return siegeField;
     }
 
-
     public void addCardInSection(Unit unit){
         unit.playIn(this);
     }
-
-
-
 
     public Score getSectionsScore(){
 
@@ -55,7 +51,7 @@ public class PlayerField {
         Score totalScore = new Score(0);
 
         for (Section section : sections) {
-            totalScore = totalScore.add(section.getScore());
+            totalScore = totalScore.addScore(section.getScore());
         }
 
 

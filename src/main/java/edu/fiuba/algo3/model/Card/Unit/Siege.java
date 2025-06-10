@@ -6,7 +6,7 @@ import edu.fiuba.algo3.model.Section.PlayerField;
 
 public class Siege extends Unit {
 
-    public Siege(String name, Score score, String type, Modifier modifier) {
+    public Siege(String name, int score, String type, Modifier modifier) {
         super(name, score, type, modifier);
     }
 

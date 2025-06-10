@@ -16,7 +16,6 @@ public class Board {
 
     public Board(Player player1, Player player2) {
 
-
         playerFields = new HashMap<>();
 
         playerFields.put(player1, playerField1);
@@ -24,17 +23,14 @@ public class Board {
 
     }
 
-
-
     public void addCardToPlayerField(Unit card, Player player) {
-        PlayerField playerField = getPlayerField(player);
-        playerField.addCardInSection(card);
+
+        getPlayerField(player).addCardInSection(card);
     }
 
-
     public Score getPlayerScore(Player player) {
-        PlayerField playerField = getPlayerField(player);
-        return  playerField.getSectionsScore();
+
+        return  getPlayerField(player).getSectionsScore();
     }
 
     public List<Section> getSections(Player player) {

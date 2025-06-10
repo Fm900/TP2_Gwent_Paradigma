@@ -1,4 +1,5 @@
 package edu.fiuba.algo3.model.Section;
+import edu.fiuba.algo3.model.Card.Modifier.Modifier;
 import edu.fiuba.algo3.model.Card.Unit.Unit;
 import edu.fiuba.algo3.model.Score;
 
@@ -8,6 +9,7 @@ import java.util.List;
 public abstract class Section {
 
     private List<Unit> unitCards;
+    private List<Unit> bondedCards;
 
     public Section() {
         this.unitCards = new ArrayList<>();
@@ -15,14 +17,13 @@ public abstract class Section {
 
     public void addCard(Unit newUnit) {
         unitCards.add(newUnit);
+        Modifier modifier = newUnit.getModifier();
+        unitCards = modifier.apply(unitCards);
     }
-
-
-
 
     public void applyClimateEffect(){
         for (Unit unit : unitCards) {
-            unit.reducePointsTo(new Score(1));
+            unit.reduceScore(1);
         }
     }
 

@@ -7,7 +7,7 @@ import edu.fiuba.algo3.model.Section.PlayerField;
 public class Range extends Unit{
 
 
-    public Range(String name, Score score, String type, Modifier modifier) {
+    public Range(String name, int score, String type, Modifier modifier) {
         super(name, score, type, modifier);
     }
 
