@@ -16,6 +16,7 @@ public abstract class Unit extends Card {
     private String type;
     private int score;
     private Modifier modifier;
+    private int baseScore;
 
     public Unit(String name, int score, String type, Modifier modifier) {
         super(name);
@@ -48,4 +49,16 @@ public abstract class Unit extends Card {
     public Modifier getModifier() {
         return modifier;
     }
+
+
+    public void reducePointsToOne(){
+        baseScore = score;
+        score = 1;
+    }
+
+    public void applyBasePoints(){
+        score = baseScore;
+    }
+
+
 }

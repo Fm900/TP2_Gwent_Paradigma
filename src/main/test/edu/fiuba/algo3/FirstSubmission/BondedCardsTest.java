@@ -22,8 +22,8 @@ public class BondedCardsTest {
         Player player2 = new Player(deck, hand2, discardPile, "testing one");
         Board board = new Board(player1, player2);
 
-        Unit trebuchet1 = new Siege("trebuchet long distance", new Score(8), "catapult", new Basic());
-        Unit trebuchet2 = new Siege("trebuchet fire thrower", new Score(8), "catapult", new Bonded());
+        Unit trebuchet1 = new Siege("trebuchet long distance", 8, "catapult", new Basic());
+        Unit trebuchet2 = new Siege("trebuchet fire thrower", 8, "catapult", new Bonded());
 
         hand1.addCard(trebuchet1);
         hand1.addCard(trebuchet2);

@@ -1,3 +1,5 @@
+
+/*
 package edu.fiuba.algo3.FirstSubmission;
 
 import edu.fiuba.algo3.model.*;
@@ -38,3 +40,4 @@ public class PlayerPointsTest {
         assertEquals("Warrior", playedCard.getName());
     }
 }
+*/

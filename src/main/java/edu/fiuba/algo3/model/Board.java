@@ -5,6 +5,7 @@ import edu.fiuba.algo3.model.Section.Section;
 
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 
@@ -16,12 +17,19 @@ public class Board {
 
     public Board(Player player1, Player player2) {
 
+
         playerFields = new HashMap<>();
 
         playerFields.put(player1, playerField1);
         playerFields.put(player2, playerField2);
 
     }
+
+
+    public Collection<PlayerField> getAllPlayerFields() {
+        return playerFields.values();
+    }
+
 
     public void addCardToPlayerField(Unit card, Player player) {
 
