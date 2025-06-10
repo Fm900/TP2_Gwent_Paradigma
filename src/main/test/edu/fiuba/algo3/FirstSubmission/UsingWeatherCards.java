@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
-public class usingWeatherCards {
+public class UsingWeatherCards {
 
     private Hand hand1;
     private Hand hand2;
@@ -53,51 +53,42 @@ public void usingSnowSpecialCard(){
     player2.playCard(0, board);
 
 
-    System.out.println(board.getPlayerScore(player1).getValue());
-    System.out.println(board.getPlayerScore(player2).getValue());
-
     hand1.addCard(snow);
     player1.playCard(0, board);
-
-
-    System.out.println(board.getPlayerScore(player1).getValue());
 
 
     Score scorePlayer1 = board.getPlayerScore(player1);
     Score scorePlayer2 = board.getPlayerScore(player2);
 
     assertTrue(new Score(1).equals(scorePlayer1));
+    assertTrue(new Score(1).equals(scorePlayer2));
 
 }
 
 
-/*
 
 @Test
 public void usingFogSpecialCard(){
 
-    Range albrich = new Range("Albrich", 4, "Warrior", new Basic());
-    Range dethmold = new Range("Dethmold", 11, "Warr", new Basic());
+    Range albrich = new Range("Albrich", 3, "Warrior", new Basic());
+    Range dethmold = new Range("Dethmold", 5, "Warr", new Basic());
     Fog fog = new Fog("Fog");
 
-    deck.addCard(albrich);
-    deck.addCard(dethmold);
-    deck.addCard(fog);
 
+    hand1.addCard(albrich);
+    hand2.addCard(dethmold);
 
-    player1.drawCard();
     player1.playCard(0, board);
-
-    player2.drawCard();
     player2.playCard(0, board);
 
-    player1.drawCard();
+    hand1.addCard(fog);
     player1.playCard(0, board);
 
+    Score scorePlayer1 = board.getPlayerScore(player1);
+    Score scorePlayer2 = board.getPlayerScore(player2);
 
-
-    assertEquals(1, player1.getTotalPoints(board));
-    assertEquals(1, player2.getTotalPoints(board));
+    assertTrue(new Score(1).equals(scorePlayer1));
+    assertTrue(new Score(1).equals(scorePlayer2));
 
 }
 
@@ -111,27 +102,23 @@ public void usingTorrentialRainSpecialCard(){
     TorrentialRain torrentialRain = new TorrentialRain("TorrentialRain");
 
 
-    deck.addCard(ballista);
-    deck.addCard(catapult);
-    deck.addCard(torrentialRain);
+    hand1.addCard(ballista);
+    hand2.addCard(catapult);
 
-
-    player1.drawCard();
     player1.playCard(0, board);
-
-    player2.drawCard();
     player2.playCard(0, board);
 
-    player1.drawCard();
+    hand1.addCard(torrentialRain);
     player1.playCard(0, board);
 
 
-    assertEquals(1, player1.getTotalPoints(board));
-    assertEquals(1, player2.getTotalPoints(board));
+    Score scorePlayer1 = board.getPlayerScore(player1);
+    Score scorePlayer2 = board.getPlayerScore(player2);
+
+    assertTrue(new Score(1).equals(scorePlayer1));
+    assertTrue(new Score(1).equals(scorePlayer2));
 
 }
 
-
- */
 
 }
