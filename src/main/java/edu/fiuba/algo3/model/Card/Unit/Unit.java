@@ -36,6 +36,10 @@ public abstract class Unit extends Card {
         score += scoreAdd;
     }
 
+    public void duplicateScore(){
+        score = score * 2;
+    }
+
     public boolean compareType(Unit otherUnit){
         return otherUnit.sameType(type);
     }

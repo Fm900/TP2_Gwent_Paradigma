@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Legend implements Modifier{
     @Override
-    public List<Unit> apply(List<Unit> unitCards) {
+    public List<Unit> apply(List<Unit> unitCards, Unit unit) {
         return List.of();
     }
 }

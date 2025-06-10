@@ -7,7 +7,7 @@ import java.util.List;
 public class AddBaseValue implements Modifier{
 
     @Override
-    public List<Unit> apply(List<Unit> unitCards) {
+    public List<Unit> apply(List<Unit> unitCards, Unit unit) {
         for(Unit u : unitCards){
             u.addScore(1);
         }

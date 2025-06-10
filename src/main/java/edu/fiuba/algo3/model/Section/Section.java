@@ -23,7 +23,7 @@ public abstract class Section {
     public void addCard(Unit newUnit) {
         unitCards.add(newUnit);
         Modifier modifier = newUnit.getModifier();
-        unitCards = modifier.apply(unitCards);
+        unitCards = modifier.apply(unitCards, newUnit);
     }
 
 

@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.FirstSubmission;
 
 import edu.fiuba.algo3.model.*;
+import edu.fiuba.algo3.model.Card.Modifier.AddBaseValue;
 import edu.fiuba.algo3.model.Card.Modifier.Basic;
 import edu.fiuba.algo3.model.Card.Modifier.Bonded;
 import edu.fiuba.algo3.model.Card.Unit.Siege;
@@ -8,7 +9,7 @@ import edu.fiuba.algo3.model.Card.Unit.Unit;
 import edu.fiuba.algo3.model.Deck.Deck;
 import org.junit.jupiter.api.Test;
 
-public class BondedCardsTest {
+public class AddBaseValueTest {
 
     @Test
     public void testBondedCardsDoublePointsDuringRound() {
@@ -23,7 +24,7 @@ public class BondedCardsTest {
         Board board = new Board(player1, player2);
 
         Unit trebuchet1 = new Siege("trebuchet long distance", 8, "catapult", new Basic());
-        Unit trebuchet2 = new Siege("trebuchet fire thrower", 8, "catapult", new Bonded());
+        Unit trebuchet2 = new Siege("trebuchet fire thrower", 8, "catapult", new AddBaseValue());
 
         hand1.addCard(trebuchet1);
         hand1.addCard(trebuchet2);
@@ -33,7 +34,7 @@ public class BondedCardsTest {
 
         Score finalScore = board.getPlayerScore(player1);
 
-        assert(new Score(32).equals(finalScore));
+        assert(new Score(18).equals(finalScore));
     }
 
 }

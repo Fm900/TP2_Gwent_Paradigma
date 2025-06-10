@@ -8,7 +8,13 @@ public class Bonded implements Modifier{
 
 
     @Override
-    public List<Unit> apply(List<Unit> unitCards) {
-        return List.of();
+    public List<Unit> apply(List<Unit> unitCards, Unit unit) {
+        for (Unit u: unitCards){
+            if (u.compareType(unit)){
+                u.duplicateScore();
+                unit.duplicateScore();
+            }
+        }
+        return unitCards;
     }
 }
