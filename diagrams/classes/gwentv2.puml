@@ -1,0 +1,177 @@
+@startuml Diagrama de Clases
+
+skinparam monochrome true
+hide circle
+skinparam classAttributeIconSize 0
+
+title TP2 - Gwent V2 Grupo 11
+
+class GameBuilder {
+    - deckBuilder: DeckBuilder
+    - handBuilder: HandBuilder
+    + buildGame(namePlayer1: String, selectedDeck1: String, namePlayer2: String, selectedDeck2: String ): Game
+}
+
+class DeckBuilder {
+    + buildDeck(deckName: String): Deck
+    + getAvailableDeck(): List<String>
+}
+
+class HandBuilder {
+    + buildHand(deck: Deck) :
+}
+
+class Game {
+    - player1: Player
+    - player2: Player
+    - board: Board
+    + StartGame()
+}
+
+class Board {
+    - playerField1: PlayerField
+    - playerField2: PlayerField
+    + addCardToPlayerField(card: Unit, player: Player): void
+}
+
+class Section {
+    - unitCards: List<Unit>
+    - bondedCards: List<Unit>
+    - state: SectionState
+    + addCard(card: Unit): void
+    + applyClimateEffect(): void
+    + clearClimateEffect(): void
+}
+
+interface SectionState <<interface>>{
+    + apllyEffectToUnitCards(unitCards: List<Unit>): void
+}
+
+class ClimateState {
+    + apllyEffectToUnitCards(unitCards: List<Unit>): void
+}
+
+class NormalState {
+    + apllyEffectToUnitCards(unitCards: List<Unit>): void
+}
+
+class Player {
+    - deck: Deck
+    - hand: Hand
+    - discardPile: DiscardPile
+    - name: String
+    + drawCard(): void
+    + playCard(index: int, board: Board): Card
+    + replaceCards(cardsToReplace: List<Card>)
+}
+
+class Score {
+    - dinamicValue: int
+    - staticValue: int
+    + add(score: Score)
+    + subtract(score: Score)
+    + multiply(factor: int)
+    + divide(divisor: int)
+}
+
+abstract class CardsContainer {
+    - cards: List<Card>
+    + addCard(card: Card): void
+    + removeCard(num: int): void
+    + removeSpecificCard(card: Card)
+}
+
+class Deck {
+    + draw(): Card
+    + shuffle(): void
+}
+
+class MonstersDeck {
+    + MonstersDeck()
+}
+
+class ScoiaTaiel {
+    + ScoiaTaiel()
+}
+
+class NothernRealms {
+    + NothernRealms()
+}
+
+class Hand {
+    + playCard(index: int): Card
+}
+
+class DiscardPile {
+}
+
+abstract class Card {
+    - name: String
+    - deck: String
+}
+
+abstract class Unit {
+    - score: Int
+    - section: String
+    - modifier: Modifier 
+    + compareType(Unit: unit): Boolean
+    + playIn(PlayerField: playerField)
+}
+
+abstract class Special {
+    + applyInBoard(board: Board): void
+}
+
+class PlayerField {
+    - meleeField: Section
+    - rangeField: Section
+    - siegeField: Section
+    + addCardInSection(card: Unit)
+    + getSectionsScore(): Score
+}
+
+class MeleeField
+class RangeField
+class SiegeField 
+
+GameBuilder --> Game
+GameBuilder --> DeckBuilder
+GameBuilder --> HandBuilder
+DeckBuilder --> Deck
+HandBuilder --> Hand
+Game *-- "2" Player
+Game *-- Board
+
+Board   *-- PlayerField
+PlayerField --> "3" Section
+Section <|-- MeleeField
+Section <|-- RangeField
+Section <|-- SiegeField
+Section --> Unit
+Section --> Special
+Section  --> Score
+Section --> SectionState
+SectionState <|.. ClimateState
+SectionState <|.. NormalState
+
+PlayerField --> Score
+Player  --> "3" CardsContainer
+
+CardsContainer <|-- DiscardPile
+CardsContainer <|-- Deck
+CardsContainer <|-- Hand
+
+Deck *-- "*" Card
+Deck <|-- MonstersDeck
+Deck <|-- NothernRealms
+Deck <|-- ScoiaTaiel
+
+Hand *-- "0..*" Card
+DiscardPile *-- "0..*" Card
+
+Card <|-- Unit
+Card <|-- Special
+
+@enduml
+
+

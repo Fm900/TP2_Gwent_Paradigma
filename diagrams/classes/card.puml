@@ -3,61 +3,121 @@
 skinparam monochrome true
 hide circle
 skinparam classAttributeIconSize 0
+left to right direction
 
 title TP2 - Cards
 
 abstract class Card {
     - name: String
-    - points: int
-    + Card(name: String, points: int)
-    + getPoints(): int
-    + getName(): String
-    + setPoints(points: int): void
+    - deck: String
 }
 
 abstract class Unit {
-    - section: SectionAvailable
-    + Unit(name: String, points: int, section: SectionAvailable)
-    + reducePointsTo(value: int): void
-    + getSection(): SectionAvailable
+    - score: Int
+    - section: String
+    - Mod: Mod
+    + compareType(Unit: unit): Boolean
+    + playIn(PlayerField: playerField)
 }
 
-interface Special <<interface>> {
-    + Special(name: String)
+abstract class Special {
     + applyInBoard(board: Board): void
 }
 
-class Melee
-class Range
-class Siege 
+class Melee {
+    + playIn(PlayerField: playerField)
+}
 
-abstract class Climate
-class MoraleBoost
-class ScorchedEarth
+class Range {
+    + playIn(PlayerField: playerField)
+}
 
-interface Modifier <<interface>>
-class Legendary
-class Doctor
-class Agile
-class LinkedCards
-class Spies
-class BaseValueSum
+class Siege {
+    + playIn(PlayerField: playerField)
+}
+
+abstract class Climate {
+    + applyInBoard(board: Board): void
+}
+
+class ClearClimate {
+    + apllyInBoard(boards:Board): void
+}
+
+class Fog {
+    + applyClimTo(field: PlayerField): void
+}
+
+class Snow {
+    + applyClimTo(field: PlayerField): void
+}
+
+class TorrentialRain {
+    + applyClimTo(field: PlayerField): void
+}
+
+class MoraleBoost {
+    + applyInBoard(board: Board): void
+}
+
+class ScorchedEarth {
+    + applyInBoard(board: Board): void
+}
+
+interface Mod <<interface>> {
+    + apply(unitCards: List<Unit>): List<Unit>
+}
+
+class Legend {
+    + apply(unitCards: List<Unit>): List<Unit>
+}
+
+class Basic {
+    + apply(unitCards: List<Unit>): List<Unit>
+}
+
+class Medic {
+    + apply(unitCards: List<Unit>): List<Unit>
+}
+
+class Agile {
+    + apply(unitCards: List<Unit>): List<Unit>
+}
+
+class Bonded {
+    + apply(unitCards: List<Unit>): List<Unit>
+}
+
+class Spy {
+    + apply(unitCards: List<Unit>): List<Unit>
+}
+
+class AddBaseValue {
+    + apply(unitCards: List<Unit>): List<Unit>
+}
 
 Card <|-- Unit
 Card <|-- Special
-Modifier <|.. Legendary
-Modifier <|.. Doctor 
-Modifier <|.. Agile 
-Modifier <|.. LinkedCards
-Modifier <|.. Spies 
-Modifier <|.. BaseValueSum
+Mod <|.. Legend
+Mod <|.. Medic
+Mod <|.. Agile
+Mod <|.. Bonded
+Mod <|.. Spy
+Mod <|.. AddBaseValue
+Mod <|.. Basic
 
-Unit --> "0..1" Modifier
+Unit --> "0..1" Mod
 Unit <|-- Melee
 Unit <|-- Range
 Unit <|-- Siege
-Special <|.. Climate
-Special <|.. MoraleBoost
-Special <|.. ScorchedEarth
+
+Special <|-- Climate
+Climate <|-- Fog
+Climate <|-- TorrentialRain
+Climate <|-- Snow
+
+Special <|-- ClearClimate
+Special <|-- MoraleBoost
+Special <|-- ScorchedEarth
 
 @enduml
