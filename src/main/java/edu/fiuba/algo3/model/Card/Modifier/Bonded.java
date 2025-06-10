@@ -13,6 +13,7 @@ public class Bonded implements Modifier{
             if (u.compareType(unit)){
                 u.duplicateScore();
                 unit.duplicateScore();
+                break;
             }
         }
         return unitCards;
