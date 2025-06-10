@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.model.Builders;
 
 import edu.fiuba.algo3.model.Deck.Deck;
-import edu.fiuba.algo3.model.Hand;
+import edu.fiuba.algo3.model.CardsContainer.Hand;
 
 public class HandBuilder {
     public static final int STARTINGCARDS = 10;
