@@ -8,4 +8,5 @@ module edu.fiuba.algo3 {
     exports edu.fiuba.algo3.model;
     exports edu.fiuba.algo3.model.Card;
     exports edu.fiuba.algo3.model.Deck;
+    exports edu.fiuba.algo3.model.Builders;
 }

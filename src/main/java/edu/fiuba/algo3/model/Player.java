@@ -4,6 +4,9 @@ import edu.fiuba.algo3.model.Card.Card;
 import edu.fiuba.algo3.model.Card.Special.Special;
 import edu.fiuba.algo3.model.Card.Unit.Unit;
 import edu.fiuba.algo3.model.Deck.Deck;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.List;
 
 public class Player {
     private Deck deck;
@@ -25,6 +28,18 @@ public class Player {
         }
     }
 
+    public void replaceCards(@NotNull List<Card> cardsToReplace) {
+        for (Card card : cardsToReplace)
+            if (hand.removeSpecificCard(card)) deck.addCard(card);
+        deck.shuffle();
+
+        for (int i = 0; i < cardsToReplace.size(); i++) {
+            Card newCard = deck.draw();
+            if (newCard != null) {
+                hand.addCard(newCard);
+            }
+        }
+    }
     public Card playCard(int index, Board board) {
         Card playedCard = hand.playCard(index);
         discardPile.addCard(playedCard);
@@ -42,5 +57,11 @@ public class Player {
         return discardPile;
     }
 
+    public Deck getDeck() {
+        return deck;
+    }
 
+    public Hand getHand() {
+        return hand;
+    }
 }

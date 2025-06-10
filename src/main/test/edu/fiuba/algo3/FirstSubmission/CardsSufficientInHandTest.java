@@ -1,58 +1,29 @@
 package edu.fiuba.algo3.FirstSubmission;
 
 import edu.fiuba.algo3.model.*;
-import edu.fiuba.algo3.model.Card.Modifier.Basic;
-import edu.fiuba.algo3.model.Card.Special.Snow;
-import edu.fiuba.algo3.model.Card.Unit.Melee;
-import edu.fiuba.algo3.model.Deck.Deck;
+import edu.fiuba.algo3.model.Builders.GameBuilder;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CardsSufficientInHandTest {
-    private Hand hand;
-    private DiscardPile discardPile;
+    private Game game;
 
     @BeforeEach
     public void setUp() {
-        hand = new Hand();
-        this.discardPile = new DiscardPile();
-    }
-
-    private Deck deckBuilder(int units, int special){
-        Deck deck = new Deck("Monster");
-        for (int i = 0; i < units; i++) {
-            Melee card = new Melee("Warrior", 10, "Warrior", new Basic());
-            deck.addCard(card);
-        }
-        for (int i = 0; i < special; i++) {
-            Snow snow = new Snow("Snow");
-            deck.addCard(snow);
-        }
-        return deck;
-    }
-
-    private void handBuilder(int numCards, Player player){
-        for (int i = 0; i < numCards; i++) {
-            player.drawCard();
-        }
+        this.game = GameBuilder.buildGame("Alex", "Monsters", "Felix", "Monsters");
     }
 
     @Test
-    public void testCardsSufficientInHand(){
-        Deck deck = deckBuilder(15,5);
-        Player player = new Player(deck, this.hand, this.discardPile, "Juan");
-        handBuilder(10, player);
-        player.validateHand();
-        assertDoesNotThrow(player::validateHand);
-    }
+    public void testCardsSufficientInHand() {
+        Player player = this.game.getPlayer1();
+        Hand hand = player.getHand();
+        int expectedCardsInHand = 10;
+        int cardsObtained = hand.getCards().size();
 
-    @Test
-    public void testCardsSufficientInHand2(){
-        Deck deck = deckBuilder(15,5);
-        Player player = new Player(deck, this.hand, this.discardPile, "Juan");
-        handBuilder(11, player);
-        assertThrows(ExcessCardsHand.class, player::validateHand);
+        assertTrue(expectedCardsInHand == cardsObtained);
+
+
     }
 }

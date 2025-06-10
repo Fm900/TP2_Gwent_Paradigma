@@ -16,8 +16,13 @@ public abstract class CardsContainer {
     public void removeCard(int num){
         cards.remove(0);
     };
+
     public List<Card> getCards(){return cards;};
     public int size(){return cards.size();};
+
+    public boolean removeSpecificCard(Card card) {
+        return cards.remove(card);
+    }
 
 
 }
