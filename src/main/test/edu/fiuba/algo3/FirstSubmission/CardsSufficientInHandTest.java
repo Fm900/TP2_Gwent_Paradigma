@@ -2,6 +2,7 @@ package edu.fiuba.algo3.FirstSubmission;
 
 import edu.fiuba.algo3.model.*;
 import edu.fiuba.algo3.model.Builders.GameBuilder;
+import edu.fiuba.algo3.model.CardsContainer.Hand;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

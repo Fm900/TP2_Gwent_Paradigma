@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.model.Deck;
 
 import edu.fiuba.algo3.model.Card.Card;
-import edu.fiuba.algo3.model.CardsContainer;
+import edu.fiuba.algo3.model.CardsContainer.CardsContainer;
 
 import java.util.Collections;
 

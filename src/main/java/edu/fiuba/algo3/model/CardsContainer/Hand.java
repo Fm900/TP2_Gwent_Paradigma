@@ -1,9 +1,9 @@
-package edu.fiuba.algo3.model;
+package edu.fiuba.algo3.model.CardsContainer;
 
 import edu.fiuba.algo3.model.Card.Card;
 
 
-public class Hand extends CardsContainer{
+public class Hand extends CardsContainer {
     private static final int MAX_CARDS = 10;
 
     public Card playCard(int index) {

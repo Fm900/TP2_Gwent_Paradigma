@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.model;
+package edu.fiuba.algo3.model.CardsContainer;
 
 import edu.fiuba.algo3.model.Card.Card;
 

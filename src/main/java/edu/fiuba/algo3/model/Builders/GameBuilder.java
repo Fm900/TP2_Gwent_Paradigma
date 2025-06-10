@@ -1,6 +1,8 @@
 package edu.fiuba.algo3.model.Builders;
 
 import edu.fiuba.algo3.model.*;
+import edu.fiuba.algo3.model.CardsContainer.DiscardPile;
+import edu.fiuba.algo3.model.CardsContainer.Hand;
 import edu.fiuba.algo3.model.Deck.Deck;
 import org.jetbrains.annotations.NotNull;
 
