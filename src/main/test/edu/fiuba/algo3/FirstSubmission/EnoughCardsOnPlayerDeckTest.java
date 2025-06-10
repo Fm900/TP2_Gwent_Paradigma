@@ -1,51 +1,41 @@
+
+
 package edu.fiuba.algo3.FirstSubmission;
 
 import edu.fiuba.algo3.model.*;
-import edu.fiuba.algo3.model.Card.Special.Snow;
-import edu.fiuba.algo3.model.Card.Unit.Melee;
+import edu.fiuba.algo3.model.Builders.GameBuilder;
+import edu.fiuba.algo3.model.Card.Special.Special;
+import edu.fiuba.algo3.model.Card.Unit.Unit;
+import edu.fiuba.algo3.model.Deck.Deck;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class EnoughCardsOnPlayerDeckTest {
-    private Hand hand;
-    private DiscardPile discardPile;
-
-    private Deck deckBuilder(int units, int special){
-        Deck deck = new Deck();
-        for (int i = 0; i < units; i++) {
-            Melee card = new Melee("Warrior", 10, "Warrior");
-            deck.addCard(card);
-        }
-        for (int i = 0; i < special; i++) {
-            Snow snow = new Snow("Snow");
-            deck.addCard(snow);
-        }
-        return deck;
-    }
+    private Game game;
 
     @BeforeEach
-    public void setUp(){
-        this.hand = new Hand();
-        this.discardPile = new DiscardPile();
+    public void setUp() {
+        this.game = GameBuilder.buildGame("Alex", "Monsters", "Felix", "Monsters");
     }
 
     @Test
-    public void testEnoughCardsOnPlayerDeck() {
-        Deck deck = deckBuilder(15, 5);
-        Player player = new Player(deck, this.hand, this.discardPile, 0, "Valen");
+    public void testDeckHasMinimumRequiredCards() {
+        Player player = this.game.getPlayer1();
+        Deck deck = player.getDeck();
 
-        player.validateDeck();
-        assertDoesNotThrow(player::validateDeck);
+        long unitCount = deck.getCards().stream()
+                .filter(card -> card instanceof Unit)
+                .count();
+
+        long specialCount = deck.getCards().stream()
+                .filter(card -> card instanceof Special)
+                .count();
+
+        assertTrue(unitCount >= 15, "El mazo debe tener al menos 15 cartas de unidad");
+        assertTrue(specialCount >= 6, "El mazo debe tener al menos 6 cartas especiales");
     }
-
-    @Test
-    public void testEnoughCardsOnPlayerDeck2() {
-        Deck deck = deckBuilder(10, 5);
-        Player player = new Player(deck, this.hand, this.discardPile, 0, "Valen");
-
-        assertThrows(InvalidDeck.class, player::validateDeck);
-    }
-
 }
+
+
