@@ -1,8 +1,10 @@
 package edu.fiuba.algo3.model.Builders;
 
 import edu.fiuba.algo3.model.Card.*;
-import edu.fiuba.algo3.model.Card.Unit.*;
+import edu.fiuba.algo3.model.Card.Modifier.*;
 import edu.fiuba.algo3.model.Card.Special.*;
+import edu.fiuba.algo3.model.Card.Special.Weather.*;
+import edu.fiuba.algo3.model.Card.Unit.*;
 import com.google.gson.JsonObject;
 
 public class CardFactory {
@@ -22,28 +24,22 @@ public class CardFactory {
 
     private static Unit createUnit(JsonObject json) {
         String name = json.get("name").getAsString();
-        String deck = json.get("deck").getAsString();
         int score = json.get("score").getAsInt();
-        String sectionStr = json.get("section").getAsString();
+        String subtype = json.get("subtype").getAsString(); // Melee, Range, Siege
 
-        Unit unit;
-        switch (sectionStr.toUpperCase()) {
-            case "MELEE": unit = new Melee(name, score, deck, sectionStr); break;
-            case "RANGE": unit = new Range(name, score, deck, sectionStr); break;
-            case "SIEGE": unit = new Siege(name, score, deck, sectionStr); break;
-            default:
-                throw new IllegalArgumentException("Sección inválida: " + sectionStr);
-        }
-
-        //suponiendo que el json no tiene siempre el atributo modifier.
-
+        Modifier modifier = null;
         if (json.has("modifier")) {
             String modifierType = json.get("modifier").getAsString();
-            Modifier modifier = createModifier(modifierType);
-            unit.setModifier(modifier);
+            modifier = ModifierFactory.create(modifierType);
         }
 
-        return unit;
+        switch (subtype.toUpperCase()) {
+            case "MELEE": return new Melee(name, score, subtype, modifier);
+            case "RANGE": return new Range(name, score, subtype, modifier);
+            case "SIEGE": return new Siege(name, score, subtype, modifier);
+            default:
+                throw new IllegalArgumentException("Subtipo de unidad inválido: " + subtype);
+        }
     }
 
     private static Special createSpecial(JsonObject json) {
@@ -54,18 +50,17 @@ public class CardFactory {
             case "Morale Boost":
                 return new MoraleBoost(name);
             case "Climate":
-                return new Climate(name);
+                String subtype = json.get("subtype").getAsString(); // Por ejemplo: "Fog"
+                switch (subtype) {
+                    case "Fog": return new Fog(name);
+                    case "Snow": return new Snow(name);
+                    case "TorrentialRain": return new TorrentialRain(name);
+                    default: throw new IllegalArgumentException("Subtipo de Climate desconocido: " + subtype);
+                }
+             case "Clear Climate":
+                 return new ClearClimate(name);
             default:
                 throw new IllegalArgumentException("Special no reconocida: " + name);
-        }
-    }
-
-    private static Modifier createModifier(String modifierType) {
-        switch (modifierType) {
-            case "Legendary": return new Legendary();
-            case "Doctor": return new Doctor();
-            case "Agile": return new Agile();
-            default: throw new IllegalArgumentException("Modifier desconocido: " + modifierType);
         }
     }
 }

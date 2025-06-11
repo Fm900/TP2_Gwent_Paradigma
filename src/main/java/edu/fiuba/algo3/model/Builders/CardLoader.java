@@ -8,9 +8,9 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CardParser {
+public class CardLoader {
 
-    public static List<Card> parse(String filePath) {
+    public static List<Card> loadCards(String filePath) {
         List<Card> cards = new ArrayList<>();
         try {
             JsonArray array = JsonParser.parseReader(new FileReader(filePath)).getAsJsonArray();
