@@ -10,7 +10,7 @@ import edu.fiuba.algo3.model.Card.Unit.Range;
 import edu.fiuba.algo3.model.Card.Unit.Siege;
 import edu.fiuba.algo3.model.CardsContainer.DiscardPile;
 import edu.fiuba.algo3.model.CardsContainer.Hand;
-import edu.fiuba.algo3.model.Deck.Deck;
+import edu.fiuba.algo3.model.CardsContainer.Deck;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;

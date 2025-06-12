@@ -1,25 +1,23 @@
 package edu.fiuba.algo3.model.Builders;
 
-
-import edu.fiuba.algo3.model.Deck.*;
+import edu.fiuba.algo3.model.Card.Modifier.Legend;
+import edu.fiuba.algo3.model.Card.Special.MoraleBoost;
+import edu.fiuba.algo3.model.Card.Unit.Melee;
+import edu.fiuba.algo3.model.CardsContainer.Deck;
 import org.jetbrains.annotations.NotNull;
 
 public class DeckBuilder {
-    public Deck buildDeck(@NotNull String deckName){
-        Deck deck = null;
-        if(deckName.equals("Monsters")){
-           deck = new MonstersDeck();
+    public Deck buildDeck(@NotNull String deckName) {
+        Deck deck = new Deck(deckName);
+
+        for(int i = 0; i < 15; i++) {
+            deck.addCard(new Melee("Warrior", 5, "Warrior", new Legend()));
         }
-        if(deckName.equals("Nilfgaardian Empire")){
-            deck = new NilfgaardianEmpire();
+
+        for(int i = 0; i < 6; i++) {
+            deck.addCard(new MoraleBoost("MoraleBoost"));
         }
-        if(deckName.equals("Northern Realms")){
-            deck = new NorthernRealms();
-        }
-        if(deckName.equals("Scoia tael")){
-            deck = new ScoiaTael();
-        }
+
         return deck;
     }
-
 }

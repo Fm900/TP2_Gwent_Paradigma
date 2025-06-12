@@ -1,10 +1,5 @@
 package edu.fiuba.algo3.FirstSubmission;
 
-import edu.fiuba.algo3.model.*;
-import edu.fiuba.algo3.model.Card.Unit.Unit;
-import edu.fiuba.algo3.model.Deck.Deck;
-import org.testng.annotations.Test;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 

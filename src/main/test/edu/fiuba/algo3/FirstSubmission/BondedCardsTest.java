@@ -7,7 +7,7 @@ import edu.fiuba.algo3.model.Card.Unit.Siege;
 import edu.fiuba.algo3.model.Card.Unit.Unit;
 import edu.fiuba.algo3.model.CardsContainer.DiscardPile;
 import edu.fiuba.algo3.model.CardsContainer.Hand;
-import edu.fiuba.algo3.model.Deck.Deck;
+import edu.fiuba.algo3.model.CardsContainer.Deck;
 import org.junit.jupiter.api.Test;
 
 public class BondedCardsTest {

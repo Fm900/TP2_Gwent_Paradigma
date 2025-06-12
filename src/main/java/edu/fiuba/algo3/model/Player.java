@@ -5,7 +5,7 @@ import edu.fiuba.algo3.model.Card.Special.Special;
 import edu.fiuba.algo3.model.Card.Unit.Unit;
 import edu.fiuba.algo3.model.CardsContainer.DiscardPile;
 import edu.fiuba.algo3.model.CardsContainer.Hand;
-import edu.fiuba.algo3.model.Deck.Deck;
+import edu.fiuba.algo3.model.CardsContainer.Deck;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
