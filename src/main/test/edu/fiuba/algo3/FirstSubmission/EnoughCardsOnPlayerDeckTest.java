@@ -11,6 +11,7 @@ import edu.fiuba.algo3.model.CardsContainer.Hand;
 import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import java.nio.file.Paths;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -19,9 +20,10 @@ public class EnoughCardsOnPlayerDeckTest {
 
     @BeforeEach
     public void setUp() {
-        this.game = GameBuilder.buildGame("Alex", "Monsters", "Felix", "Monsters");
+        String absolutePath = Paths.get("src/test/resources/json/gwent.json").toAbsolutePath().toString();
+        GameBuilder builder = new GameBuilder(absolutePath);
+        this.game = builder.buildGame("Alex", "mazo_jugador_uno", "Felix", "mazo_jugador_dos");
     }
-
     @Test
     public void testBothPlayersHaveValidDecks() {
         verifyPlayerDeck(game.getPlayer1());

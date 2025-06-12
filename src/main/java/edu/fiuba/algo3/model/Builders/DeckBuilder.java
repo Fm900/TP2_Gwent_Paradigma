@@ -1,23 +1,28 @@
 package edu.fiuba.algo3.model.Builders;
 
-import edu.fiuba.algo3.model.Card.Modifier.Legend;
-import edu.fiuba.algo3.model.Card.Special.MoraleBoost;
-import edu.fiuba.algo3.model.Card.Unit.Melee;
+import com.google.gson.*;
+import java.io.FileReader;
+import java.io.IOException;
+
 import edu.fiuba.algo3.model.CardsContainer.Deck;
-import org.jetbrains.annotations.NotNull;
 
 public class DeckBuilder {
-    public Deck buildDeck(@NotNull String deckName) {
-        Deck deck = new Deck(deckName);
 
-        for(int i = 0; i < 15; i++) {
-            deck.addCard(new Melee("Warrior", 5, "Warrior", new Legend()));
+    private final JsonObject deckJson;
+
+    public DeckBuilder(String filePath) {
+        try {
+            JsonObject json = JsonParser.parseReader(new FileReader(filePath)).getAsJsonObject();
+            this.deckJson = json;
+        } catch (IOException e) {
+            throw new RuntimeException("Error al cargar JSON: " + filePath, e);
         }
+    }
 
-        for(int i = 0; i < 6; i++) {
-            deck.addCard(new MoraleBoost("MoraleBoost"));
+    public Deck buildDeck(String deckKey) {
+        if (!deckJson.has(deckKey)) {
+            throw new IllegalArgumentException("No existe el mazo: " + deckKey);
         }
-
-        return deck;
+        return DeckLoader.loadDeck(deckJson.getAsJsonObject(deckKey), deckKey);
     }
 }

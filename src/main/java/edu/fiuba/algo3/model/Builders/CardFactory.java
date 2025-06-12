@@ -7,60 +7,71 @@ import edu.fiuba.algo3.model.Card.Special.Weather.*;
 import edu.fiuba.algo3.model.Card.Unit.*;
 import com.google.gson.JsonObject;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class CardFactory {
 
-    public static Card createCard(JsonObject json) {
-        String type = json.get("type").getAsString();
+    public static Unit createUnitCard(JsonObject json) {
+        String name = json.get("nombre").getAsString();
+        int score = json.get("puntos").getAsInt();
+        String seccion = json.get("seccion").getAsString();
 
-        switch (type) {
-            case "Unit":
-                return createUnit(json);
-            case "Special":
-                return createSpecial(json);
-            default:
-                throw new IllegalArgumentException("Tipo de carta desconocido: " + type);
-        }
-    }
-
-    private static Unit createUnit(JsonObject json) {
-        String name = json.get("name").getAsString();
-        int score = json.get("score").getAsInt();
-        String subtype = json.get("subtype").getAsString(); // Melee, Range, Siege
+        String subtype = mapSeccionToSubtype(seccion);
 
         Modifier modifier = null;
-        if (json.has("modifier")) {
-            String modifierType = json.get("modifier").getAsString();
-            modifier = ModifierFactory.create(modifierType);
+        if (json.has("modificador") && json.get("modificador").isJsonArray()) {
+            JsonArray modifiers = json.getAsJsonArray("modificador");
+            if (!modifiers.isEmpty()) {
+                modifier = ModifierFactory.create(modifiers.get(0).getAsString());
+            }
         }
 
         switch (subtype.toUpperCase()) {
-            case "MELEE": return new Melee(name, score, subtype, modifier);
-            case "RANGE": return new Range(name, score, subtype, modifier);
-            case "SIEGE": return new Siege(name, score, subtype, modifier);
+            case "MELEE":
+                return new Melee(name, score, subtype, modifier);
+            case "RANGE":
+                return new Range(name, score, subtype, modifier);
+            case "SIEGE":
+                return new Siege(name, score, subtype, modifier);
             default:
-                throw new IllegalArgumentException("Subtipo de unidad inválido: " + subtype);
+                throw new IllegalArgumentException("Sección inválida: " + seccion);
         }
     }
 
-    private static Special createSpecial(JsonObject json) {
-        String name = json.get("name").getAsString();
-        switch (name) {
-            case "Scorched Earth":
-                return new ScorchedEarth(name);
-            case "Morale Boost":
+    public static Special createSpecialCard(JsonObject json) {
+        String name = json.get("nombre").getAsString();
+        String tipo = json.get("tipo").getAsString();
+
+        switch (tipo.toLowerCase()) {
+            case "morale boost":
                 return new MoraleBoost(name);
-            case "Climate":
-                String subtype = json.get("subtype").getAsString(); // Por ejemplo: "Fog"
-                switch (subtype) {
-                    case "Fog": return new Fog(name);
-                    case "Snow": return new Snow(name);
-                    case "TorrentialRain": return new TorrentialRain(name);
-                    default: throw new IllegalArgumentException("Subtipo de Climate desconocido: " + subtype);
-                }
-             case "Clear Climate":
-                 return new ClearClimate(name);
+            case "tierra arrasada":
+                return new ScorchedEarth(name);
+            case "clima":
+                return createClimateCard(name, json.getAsJsonArray("afectado"));
             default:
-                throw new IllegalArgumentException("Special no reconocida: " + name);
+                throw new IllegalArgumentException("Tipo especial desconocido: " + tipo);
         }
     }
+
+    private static Special createClimateCard(String name, JsonArray affected) {
+        List<String> secciones = new ArrayList<>();
+        for (JsonElement e : affected) {
+            secciones.add(e.getAsString());
+        }
+        return new Fog(name);
+        //Falta comportamiento segun diferentes climas, se deja asi para el compilado
+    }
+
+    private static String mapSeccionToSubtype(String seccion) {
+        if (seccion.toLowerCase().contains("cuerpo")) return "MELEE";
+        if (seccion.toLowerCase().contains("rango")) return "RANGE";
+        if (seccion.toLowerCase().contains("asedio")) return "SIEGE";
+        throw new IllegalArgumentException("Sección no reconocida: " + seccion);
+    }
 }
+

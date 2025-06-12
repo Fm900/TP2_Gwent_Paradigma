@@ -7,12 +7,17 @@ import edu.fiuba.algo3.model.CardsContainer.Deck;
 import org.jetbrains.annotations.NotNull;
 
 public class GameBuilder {
-    private static final DeckBuilder deckBuilder = new DeckBuilder();
-    private static final HandBuilder handBuilder = new HandBuilder();
 
-    public static @NotNull Game buildGame(String namePlayer1, String selectedDeck1, String namePlayer2, String selectedDeck2) {
-        Deck deck1 = deckBuilder.buildDeck(selectedDeck1);
-        Deck deck2 = deckBuilder.buildDeck(selectedDeck2);
+    private final DeckBuilder deckBuilder;
+    private final HandBuilder handBuilder = new HandBuilder();
+
+    public GameBuilder(String jsonPath) {
+        this.deckBuilder = new DeckBuilder(jsonPath);
+    }
+
+    public @NotNull Game buildGame(String namePlayer1, String keyDeck1, String namePlayer2, String keyDeck2) {
+        Deck deck1 = deckBuilder.buildDeck(keyDeck1);
+        Deck deck2 = deckBuilder.buildDeck(keyDeck2);
 
         Hand hand1 = handBuilder.buildHand(deck1);
         Hand hand2 = handBuilder.buildHand(deck2);
@@ -23,3 +28,4 @@ public class GameBuilder {
         return new Game(player1, player2, new Board(player1, player2));
     }
 }
+
