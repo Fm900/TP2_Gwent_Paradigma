@@ -1,19 +1,23 @@
 package edu.fiuba.algo3.SecondSubmission;
 
 import edu.fiuba.algo3.model.*;
+import edu.fiuba.algo3.model.Card.Card;
 import edu.fiuba.algo3.model.Card.Modifier.Basic;
 import edu.fiuba.algo3.model.Card.Special.Weather.ClearClimate;
-import edu.fiuba.algo3.model.Card.Special.Weather.Fog;
-import edu.fiuba.algo3.model.Card.Special.Weather.Snow;
-import edu.fiuba.algo3.model.Card.Special.Weather.TorrentialRain;
+import edu.fiuba.algo3.model.Card.Special.Weather.Climate;
 import edu.fiuba.algo3.model.Card.Unit.Melee;
 import edu.fiuba.algo3.model.Card.Unit.Range;
 import edu.fiuba.algo3.model.Card.Unit.Siege;
 import edu.fiuba.algo3.model.CardsContainer.DiscardPile;
 import edu.fiuba.algo3.model.CardsContainer.Hand;
 import edu.fiuba.algo3.model.CardsContainer.Deck;
+import edu.fiuba.algo3.model.Section.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -48,32 +52,29 @@ void setUp() {
         Melee arachas = new Melee("Arachas", 4, "Warrior", new Basic());
         Range albrich = new Range("Albrich", 3, "Warrior", new Basic());
         Siege ballista = new Siege("Ballista", 6, "Warrior", new Basic());
+        List<Class<? extends Section>> secciones = new ArrayList<>();
+        secciones.add(MeleeField.class);
+        secciones.add(RangeField.class);
+        secciones.add(SiegeField.class);
+        Climate climate = new Climate("rain", secciones);
 
-
-        Snow snow = new Snow("Snow");
-        Fog fog = new Fog("Fog");
-        TorrentialRain torrentialRain = new TorrentialRain("TorrentialRain");
         ClearClimate clearClimate = new ClearClimate("clear climate");
 
         hand1.addCard(arachas);
-        hand1.addCard(fog);
-        hand1.addCard(torrentialRain);
+        hand1.addCard(climate);
 
         hand2.addCard(albrich);
         hand2.addCard(ballista);
-        hand2.addCard(snow);
 
 
         player1.playCard(0, board); // play melee card "arachas"
         player2.playCard(0, board); // play range card "albrich"
-        player1.playCard(0, board); // play fog
         player2.playCard(0, board); // play ballista
-        player1.playCard(0, board); // play torrential rain
-        player2.playCard(0, board); // play snow
-
+        player1.playCard(0, board); // play Climate
+        //problema, si jugas una carta despues del clima no le aplica el efecto al mismo
 
         assertTrue(new Score(1).equals(board.getPlayerScore(player1)));
-        assertTrue(new Score(2).equals(board.getPlayerScore(player2)));
+        assertTrue(new Score(2).equals(board.getPlayerScore(player2)));//da 7
 
 
         hand1.addCard(clearClimate);
@@ -83,14 +84,5 @@ void setUp() {
         assertTrue(new Score(4).equals(board.getPlayerScore(player1)));
         assertTrue(new Score(9).equals(board.getPlayerScore(player2)));
 
-
-
-
     }
-
-
-
-
-
-
 }

@@ -5,11 +5,15 @@ import edu.fiuba.algo3.model.Card.Special.Special;
 import edu.fiuba.algo3.model.Section.PlayerField;
 import edu.fiuba.algo3.model.Section.Section;
 
-public abstract class Climate extends Special {
+import java.util.List;
 
+public class Climate extends Special {
 
-    public Climate(String name){
+    private List<Class<? extends Section>> affectedSections;
+
+    public Climate(String name, List<Class<? extends Section>> affectedSections) {
         super(name);
+        this.affectedSections = affectedSections;
     }
 
     @Override
@@ -17,9 +21,22 @@ public abstract class Climate extends Special {
         for (PlayerField field : board.getAllPlayerFields()) {
             applyClimateEffectTo(field);
         }
-
     }
 
-    protected abstract void applyClimateEffectTo(PlayerField field);
+    protected void applyClimateEffectTo(PlayerField field) {
+        for (Section section : field.getAllSections()) {
+            if (isAffectedSection(section)) {
+                section.applyClimateEffect();
+            }
+        }
+    }
 
+    private boolean isAffectedSection(Section section) {
+        for (Class<? extends Section> cls : affectedSections) {
+            if (cls.isInstance(section)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

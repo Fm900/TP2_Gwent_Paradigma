@@ -135,7 +135,7 @@
                 "descripcion": "Establece la fuerza de todas las cartas de Combate Cuerpo a Cuerpo en 1 para ambos jugadores.",
                 "tipo": "Clima",
                 "afectado": [
-                    "Combate Cuerpo a Cuerpo"
+                    "Cuerpo a Cuerpo"
                 ]
             },
             {
@@ -152,7 +152,7 @@
                 "tipo": "Clima",
                 "afectado": [
                     "Cuerpo a Cuerpo",
-                    "Combate a Distancia"
+                    "Rango"
                 ]
             }
         ]

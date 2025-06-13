@@ -26,8 +26,9 @@ public abstract class Section {
         unitCards = modifier.apply(unitCards, newUnit);
     }
 
-
-
+    public List<Unit> getUnits() {
+        return unitCards;
+    }
 
     public void setState(SectionState newState) {
         this.state = newState;

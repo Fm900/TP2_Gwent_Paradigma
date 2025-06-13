@@ -12,18 +12,19 @@ import java.util.List;
 import java.util.Objects;
 
 public abstract class Unit extends Card {
-
-    private String type;
-    private int score;
-    private Modifier modifier;
-    private int baseScore;
+    protected int baseScore;
+    protected int score;
+    protected String type;
+    protected Modifier modifier;
 
     public Unit(String name, int score, String type, Modifier modifier) {
         super(name);
-        this.type = type;
+        this.baseScore = score;
         this.score = score;
+        this.type = type;
         this.modifier = modifier;
     }
+
     public int getScore(){
         return score;
     }
@@ -54,15 +55,12 @@ public abstract class Unit extends Card {
         return modifier;
     }
 
-
     public void reducePointsToOne(){
-        baseScore = score;
         score = 1;
     }
 
     public void applyBasePoints(){
         score = baseScore;
     }
-
-
 }
+

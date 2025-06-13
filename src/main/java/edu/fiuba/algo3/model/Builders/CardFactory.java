@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.model.Builders;
 
-import edu.fiuba.algo3.model.Card.*;
 import edu.fiuba.algo3.model.Card.Modifier.*;
 import edu.fiuba.algo3.model.Card.Special.*;
 import edu.fiuba.algo3.model.Card.Special.Weather.*;
@@ -9,6 +8,8 @@ import com.google.gson.JsonObject;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
+import edu.fiuba.algo3.model.Section.*;
+import edu.fiuba.algo3.model.Section.Section;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,13 +60,33 @@ public class CardFactory {
     }
 
     private static Special createClimateCard(String name, JsonArray affected) {
-        List<String> secciones = new ArrayList<>();
+        List<Class<? extends Section>> secciones = new ArrayList<>();
+
         for (JsonElement e : affected) {
-            secciones.add(e.getAsString());
+            String sectionName = e.getAsString().toLowerCase();
+
+            switch (sectionName) {
+                case "cuerpo a cuerpo":
+                    secciones.add(MeleeField.class);
+                    break;
+                case "rango":
+                    secciones.add(RangeField.class);
+                    break;
+                case "asedio":
+                    secciones.add(SiegeField.class);
+                    break;
+                default:
+                    throw new IllegalArgumentException("Sección inválida: " + sectionName);
+            }
         }
-        return new Fog(name);
-        //Falta comportamiento segun diferentes climas, se deja asi para el compilado
+
+        if (name.equalsIgnoreCase("Tiempo despejado")) {
+            return new ClearClimate(name);
+        }
+
+        return new Climate(name, secciones);
     }
+
 
     private static String mapSeccionToSubtype(String seccion) {
         if (seccion.toLowerCase().contains("cuerpo")) return "MELEE";
