@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.SecondSubmission;
 
 import edu.fiuba.algo3.model.*;
-import edu.fiuba.algo3.model.Card.Card;
 import edu.fiuba.algo3.model.Card.Modifier.Basic;
 import edu.fiuba.algo3.model.Card.Special.Weather.ClearClimate;
 import edu.fiuba.algo3.model.Card.Special.Weather.Climate;
@@ -16,7 +15,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;

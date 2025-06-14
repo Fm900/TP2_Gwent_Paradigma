@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.FirstSubmission;
+package edu.fiuba.algo3.SecondSubmission;
 
 import edu.fiuba.algo3.model.*;
 import edu.fiuba.algo3.model.Card.Modifier.AddBaseValue;

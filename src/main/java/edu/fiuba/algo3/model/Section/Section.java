@@ -1,10 +1,8 @@
 package edu.fiuba.algo3.model.Section;
-import edu.fiuba.algo3.model.Card.Card;
 import edu.fiuba.algo3.model.Card.Modifier.Modifier;
 import edu.fiuba.algo3.model.Card.Unit.Unit;
 import edu.fiuba.algo3.model.Score;
-import edu.fiuba.algo3.model.Section.State.ClimateState;
-import edu.fiuba.algo3.model.Section.State.NormalState;
+import edu.fiuba.algo3.model.Section.State.*;
 import edu.fiuba.algo3.model.Section.State.SectionState;
 
 import java.util.ArrayList;
@@ -13,8 +11,8 @@ import java.util.List;
 public abstract class Section {
 
     private List<Unit> unitCards;
-    private List<Unit> bondedCards;
     private SectionState state = new NormalState();
+    private SectionState boostState = new NormalState();
 
 
     public Section() {
@@ -36,9 +34,12 @@ public abstract class Section {
         this.state.applyEffectToUnitCards(unitCards);
     }
 
-    public void applyClimateEffect() {
-        setState(new ClimateState());
+    public void setBoost(SectionState newState) {
+        this.boostState = newState;
+        this.boostState.applyEffectToUnitCards(unitCards);
     }
+
+    public void applyClimateEffect() { setState(new ClimateState()); }
 
     public void clearClimateEffect() {
         setState(new NormalState());
@@ -53,9 +54,9 @@ public abstract class Section {
     }
 
     public void applyMoraleBoostEffect() {
-        setState(new NormalState());
+        setBoost(new MoraleBoostState());
     }
-    public void clearMoraleBoostEffect() {setState(new NormalState());}
+    public void clearMoraleBoostEffect() {setBoost(new NormalState());}
 
     public List<Unit> cardsMaxScore() {
         List<Unit> toRemove  = new ArrayList<>();

@@ -8,7 +8,6 @@ public class ClimateState implements SectionState{
     @Override
     public void applyEffectToUnitCards(List<Unit> unitCards) {
         for (Unit unit : unitCards) {
-            System.out.println("reduciendo puntos a " + unit.getName());
             unit.reducePointsToOne();
         }
     }
