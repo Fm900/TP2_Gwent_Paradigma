@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.List;
 import edu.fiuba.algo3.model.Section.RangeField;
 import edu.fiuba.algo3.model.Section.Section;
-import edu.fiuba.algo3.model.Section.SiegeField;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertTrue;

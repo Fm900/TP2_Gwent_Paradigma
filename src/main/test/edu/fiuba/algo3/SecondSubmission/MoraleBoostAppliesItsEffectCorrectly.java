@@ -2,9 +2,10 @@ package edu.fiuba.algo3.SecondSubmission;
 
 import edu.fiuba.algo3.model.Board;
 import edu.fiuba.algo3.model.Card.Modifier.Basic;
+import edu.fiuba.algo3.model.Card.Special.MoraleBoost;
+import edu.fiuba.algo3.model.Card.Special.ScorchedEarth;
 import edu.fiuba.algo3.model.Card.Unit.Melee;
 import edu.fiuba.algo3.model.Card.Unit.Siege;
-import edu.fiuba.algo3.model.Card.Special.*;
 import edu.fiuba.algo3.model.CardsContainer.Deck;
 import edu.fiuba.algo3.model.CardsContainer.DiscardPile;
 import edu.fiuba.algo3.model.CardsContainer.Hand;
@@ -13,12 +14,9 @@ import edu.fiuba.algo3.model.Score;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.nio.file.Paths;
-
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class ScorchedEarthRemovesMaxCardsAndSendsToDiscardPileTest {
-
+public class MoraleBoostAppliesItsEffectCorrectly {
     private Hand hand1;
     private Hand hand2;
     private Deck deck;
@@ -43,11 +41,11 @@ public class ScorchedEarthRemovesMaxCardsAndSendsToDiscardPileTest {
         Melee arachas = new Melee("Arachas", 4, "Melee", new Basic());
         Melee prince = new Melee("Prince", 10, "Melee", new Basic());
         Siege cyclops = new Siege("Cyclops", 11, "Siege", new Basic());
-        ScorchedEarth scorchedEarth = new ScorchedEarth("fuego");
+        MoraleBoost moraleBoost = new MoraleBoost("Morale");
 
         hand1.addCard(arachas);
         hand1.addCard(prince);
-        hand1.addCard(scorchedEarth);
+        hand2.addCard(moraleBoost);
         hand2.addCard(cyclops);
 
         player1.playCard(0, board,"");
@@ -60,12 +58,12 @@ public class ScorchedEarthRemovesMaxCardsAndSendsToDiscardPileTest {
         assertTrue(new Score(14).equals(scorePlayer1));
         assertTrue(new Score(11).equals(scorePlayer2));
 
-        player1.playCard(0, board,"");
+        player2.playCard(0, board,"siege");//no toma la section como valida
 
         scorePlayer1 = board.getPlayerScore(player1);
         scorePlayer2 = board.getPlayerScore(player2);
 
-        assertTrue(new Score(0).equals(scorePlayer1));//deberia dar 14 pero da 0
-        assertTrue(new Score(0).equals(scorePlayer2));
+        assertTrue(new Score(14).equals(scorePlayer1));
+        assertTrue(new Score(22).equals(scorePlayer2));
     }
 }
