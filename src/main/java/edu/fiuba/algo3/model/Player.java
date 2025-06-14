@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.model;
 
 import edu.fiuba.algo3.model.Card.Card;
+import edu.fiuba.algo3.model.Card.Special.MoraleBoost;
 import edu.fiuba.algo3.model.Card.Special.Special;
 import edu.fiuba.algo3.model.Card.Unit.Unit;
 import edu.fiuba.algo3.model.CardsContainer.DiscardPile;
@@ -42,18 +43,25 @@ public class Player {
             }
         }
     }
-    public Card playCard(int index, Board board) {
+    public Card playCard(int index, Board board, String section) {
         Card playedCard = hand.playCard(index);
-        discardPile.addCard(playedCard);
+        addToDiscardPile(playedCard);
 
         if (playedCard instanceof Unit) {
             board.addCardToPlayerField((Unit) playedCard, this);
         } else if (playedCard instanceof Special) {
+            ((Special) playedCard).addOwner(this);
+            if( playedCard instanceof MoraleBoost){
+                ((MoraleBoost)playedCard).applyInBoard(board, section);
+            } else {
+                ((Special) playedCard).applyInBoard(board);
+            }
             ((Special) playedCard).applyInBoard(board);
         }
 
         return playedCard;
     }
+    public void addToDiscardPile(Card card) { this.discardPile.addCard(card); }
 
     public DiscardPile getDiscardPile() {
         return discardPile;

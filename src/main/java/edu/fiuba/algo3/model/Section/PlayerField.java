@@ -1,19 +1,22 @@
 package edu.fiuba.algo3.model.Section;
 
 import edu.fiuba.algo3.model.Card.Unit.Unit;
+import edu.fiuba.algo3.model.Player;
 import edu.fiuba.algo3.model.Score;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class PlayerField {
-
+    private Player player;
     private MeleeField meleeField;
     private RangeField rangeField;
     private SiegeField siegeField;
 
 
-    public PlayerField() {
+    public PlayerField(Player player) {
+        this.player = player;
         this.meleeField = new MeleeField();
         this.rangeField = new RangeField();
         this.siegeField = new SiegeField();
@@ -41,7 +44,7 @@ public class PlayerField {
         return siegeField;
     }
 
-    public void addCardInSection(Unit unit){
+    public void addCardInSection(@NotNull Unit unit){
         unit.playIn(this);
     }
 
@@ -58,6 +61,30 @@ public class PlayerField {
         return totalScore;
     }
 
+    public void aplyScorchedEarthEfect(){
+        for(Section section : this.getAllSections()){
+            List<Unit> toBurn = section.cardsMaxScore();
+            section.removeUnits(toBurn);
+            for (Unit unit : toBurn) {
+                this.player.addToDiscardPile(unit);
+            }
+        }
+    }
+
+    public void applyMoraleBoostToSection(@NotNull String sectionName) {
+        Section section;
+        if (sectionName.equalsIgnoreCase("melee")) {
+            section = meleeField;
+        } else if (sectionName.equalsIgnoreCase("range")) {
+            section = rangeField;
+        } else if (sectionName.equalsIgnoreCase("siege")) {
+            section = siegeField;
+        } else {
+            throw new IllegalArgumentException("Sección inválida: " + sectionName);
+        }
+        section.applyMoraleBoostEffect();
+    }
+    public Boolean isThePlayerField(Player player) {return player == this.player;}
 
 
 

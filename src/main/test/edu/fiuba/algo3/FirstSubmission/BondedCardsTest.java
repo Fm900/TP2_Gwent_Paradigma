@@ -30,8 +30,8 @@ public class BondedCardsTest {
         hand1.addCard(trebuchet1);
         hand1.addCard(trebuchet2);
 
-        player1.playCard(0, board);
-        player1.playCard(0, board);
+        player1.playCard(0, board,"");
+        player1.playCard(0, board,"");
 
         Score finalScore = board.getPlayerScore(player1);
 

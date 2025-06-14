@@ -1,6 +1,8 @@
 package edu.fiuba.algo3.model.Card.Special;
 
 import edu.fiuba.algo3.model.Board;
+import edu.fiuba.algo3.model.Section.PlayerField;
+import org.jetbrains.annotations.NotNull;
 
 public class ScorchedEarth extends Special {
 
@@ -9,6 +11,9 @@ public class ScorchedEarth extends Special {
     }
 
     @Override
-    public void applyInBoard(Board board) {
+    public void applyInBoard(@NotNull Board board) {
+        for (PlayerField field : board.getAllPlayerFields()){
+            field.aplyScorchedEarthEfect();
+        }
     }
 }

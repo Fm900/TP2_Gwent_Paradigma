@@ -56,12 +56,12 @@ public class UsingWeatherCards {
         hand1.addCard(arachas);
         hand2.addCard(cyclops);
 
-        player1.playCard(0, board);
-        player2.playCard(0, board);
+        player1.playCard(0, board,"");
+        player2.playCard(0, board,"");
 
 
         hand1.addCard(climate);
-        player1.playCard(0, board);
+        player1.playCard(0, board,"");
 
 
         Score scorePlayer1 = board.getPlayerScore(player1);

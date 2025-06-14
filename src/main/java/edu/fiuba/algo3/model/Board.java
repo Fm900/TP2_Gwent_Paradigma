@@ -11,13 +11,14 @@ import java.util.List;
 
 public class Board {
 
-    private PlayerField playerField1 = new PlayerField();
-    private PlayerField playerField2 = new PlayerField();
+    private PlayerField playerField1;
+    private PlayerField playerField2;
     private HashMap<Player, PlayerField> playerFields;
 
     public Board(Player player1, Player player2) {
 
-
+        playerField1 = new PlayerField(player1);
+        playerField2 = new PlayerField(player2);
         playerFields = new HashMap<>();
 
         playerFields.put(player1, playerField1);

@@ -39,7 +39,7 @@ public class PlayerDiscardPileTest {
 
     @Test
     void testCardGoesToDiscardPile() {
-        player1.playCard(0, board);
+        player1.playCard(0, board, "");
         assertEquals(1, player1.getDiscardPile().getCards().size());
         assertEquals("Warrior", player1.getDiscardPile().getCards().get(0).getName());
     }

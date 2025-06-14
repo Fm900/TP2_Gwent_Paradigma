@@ -67,10 +67,10 @@ void setUp() {
         hand2.addCard(ballista);
 
 
-        player1.playCard(0, board); // play melee card "arachas"
-        player2.playCard(0, board); // play range card "albrich"
-        player2.playCard(0, board); // play ballista
-        player1.playCard(0, board); // play Climate
+        player1.playCard(0, board,""); // play melee card "arachas"
+        player2.playCard(0, board,""); // play range card "albrich"
+        player2.playCard(0, board,""); // play ballista
+        player1.playCard(0, board,""); // play Climate
         //problema, si jugas una carta despues del clima no le aplica el efecto al mismo
 
         assertTrue(new Score(1).equals(board.getPlayerScore(player1)));
@@ -78,7 +78,7 @@ void setUp() {
 
 
         hand1.addCard(clearClimate);
-        player1.playCard(0, board); // play clear effect
+        player1.playCard(0, board,""); // play clear effect
 
 
         assertTrue(new Score(4).equals(board.getPlayerScore(player1)));

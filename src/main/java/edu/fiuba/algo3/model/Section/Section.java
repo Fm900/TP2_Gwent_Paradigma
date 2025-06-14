@@ -1,4 +1,5 @@
 package edu.fiuba.algo3.model.Section;
+import edu.fiuba.algo3.model.Card.Card;
 import edu.fiuba.algo3.model.Card.Modifier.Modifier;
 import edu.fiuba.algo3.model.Card.Unit.Unit;
 import edu.fiuba.algo3.model.Score;
@@ -51,4 +52,24 @@ public abstract class Section {
         return score;
     }
 
+    public void applyMoraleBoostEffect() {
+        setState(new NormalState());
+    }
+    public void clearMoraleBoostEffect() {setState(new NormalState());}
+
+    public List<Unit> cardsMaxScore() {
+        List<Unit> toRemove  = new ArrayList<>();
+        if(unitCards.isEmpty()) return toRemove;
+        int max = unitCards.stream().mapToInt(Unit::getScore).filter(unit -> unit >= 0).max().orElse(0);
+
+        for (Unit unit : unitCards) {
+            if (unit.getScore() == max){
+                toRemove.add(unit);
+            }
+        }
+        return toRemove;
+    }
+    public void removeUnits(List<Unit> units) {
+        unitCards.removeAll(units);
+    }
 }
