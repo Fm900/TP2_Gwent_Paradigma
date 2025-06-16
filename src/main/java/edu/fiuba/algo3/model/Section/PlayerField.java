@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.model.Section;
 
+import edu.fiuba.algo3.model.Card.Card;
 import edu.fiuba.algo3.model.Card.Unit.Unit;
 import edu.fiuba.algo3.model.Player;
 import edu.fiuba.algo3.model.Score;
@@ -61,15 +62,13 @@ public class PlayerField {
         return totalScore;
     }
 
-    public void aplyScorchedEarthEfect(){
-        for(Section section : this.getAllSections()){
-            List<Unit> toBurn = section.cardsMaxScore();
-            section.removeUnits(toBurn);
-            for (Unit unit : toBurn) {
-                this.player.addToDiscardPile(unit);
-            }
-        }
-    }
+
+
+
+
+
+
+
 
     public void applyMoraleBoostToSection(@NotNull String sectionName) {
         Section section;
@@ -86,7 +85,9 @@ public class PlayerField {
     }
     public Boolean isThePlayerField(Player player) {return player == this.player;}
 
-
+    public void discardCards(@NotNull List<Card> cards) {
+        cards.forEach(card -> this.player.addToDiscardPile(card));
+    }
 
 
 }

@@ -1,4 +1,5 @@
 package edu.fiuba.algo3.model;
+import edu.fiuba.algo3.model.Card.Card;
 import edu.fiuba.algo3.model.Card.Unit.Unit;
 import edu.fiuba.algo3.model.Section.PlayerField;
 import edu.fiuba.algo3.model.Section.Section;
@@ -46,9 +47,30 @@ public class Board {
         PlayerField playerField = getPlayerField(player);
         return playerField.getAllSections();
     }
+    public void aplyScorchedEarthEfect() {
+        int maxPoints = getTheMaxPoints();
+        List<Card> toDelete = new ArrayList<>();
+        for (PlayerField playerField : playerFields.values()) {
+            for (Section section : playerField.getAllSections()) {
+                toDelete.add(section.selecCardWhitPoint(maxPoints));
+            }
+            playerField.discardCards(toDelete);
+        }
+    }
 
+    private int getTheMaxPoints() {
+        int maxPoints = 0;
+        for(PlayerField field : getAllPlayerFields()) {
+            for(Section section : field.getAllSections()) {
+                int actualPoint = section.getPoinOfSection();
+                if(actualPoint > maxPoints) {
+                    maxPoints = actualPoint;
+                }
+            }
+        }
+        return maxPoints;
+    }
     private PlayerField getPlayerField(Player player) {
         return playerFields.get(player);
     }
-
 }

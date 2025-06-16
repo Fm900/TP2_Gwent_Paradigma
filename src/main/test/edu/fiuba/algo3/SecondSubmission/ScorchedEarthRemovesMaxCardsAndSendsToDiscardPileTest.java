@@ -57,15 +57,15 @@ public class ScorchedEarthRemovesMaxCardsAndSendsToDiscardPileTest {
         Score scorePlayer1 = board.getPlayerScore(player1);
         Score scorePlayer2 = board.getPlayerScore(player2);
 
-        assertTrue(new Score(14).equals(scorePlayer1));
-        assertTrue(new Score(11).equals(scorePlayer2));
+        assertTrue(new Score(14).equals(scorePlayer1), new String("El score del jugador uno debe ser 14"));
+        assertTrue(new Score(11).equals(scorePlayer2), new String("El score del jugador uno de 11"));
 
         player1.playCard(0, board,"");
 
         scorePlayer1 = board.getPlayerScore(player1);
         scorePlayer2 = board.getPlayerScore(player2);
 
-        assertTrue(new Score(0).equals(scorePlayer1));//deberia dar 14 pero da 0
-        assertTrue(new Score(0).equals(scorePlayer2));
+        assertTrue(new Score(14).equals(scorePlayer1), new String("El socore debe ser 14 y es " + scorePlayer1.getValue()));//deberia dar 14 pero da 0
+        assertTrue(new Score(0).equals(scorePlayer2), new String("El socore debe ser 0"));
     }
 }
