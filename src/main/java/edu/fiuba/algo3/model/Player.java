@@ -56,7 +56,6 @@ public class Player {
             } else {
                 ((Special) playedCard).applyInBoard(board);
             }
-            ((Special) playedCard).applyInBoard(board);
         }
 
         return playedCard;
@@ -73,5 +72,9 @@ public class Player {
 
     public Hand getHand() {
         return hand;
+    }
+
+    public String getName() {
+        return name;
     }
 }

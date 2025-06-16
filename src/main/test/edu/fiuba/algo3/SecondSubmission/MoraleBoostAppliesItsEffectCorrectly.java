@@ -45,8 +45,8 @@ public class MoraleBoostAppliesItsEffectCorrectly {
 
         hand1.addCard(arachas);
         hand1.addCard(prince);
-        hand2.addCard(moraleBoost);
         hand2.addCard(cyclops);
+        hand2.addCard(moraleBoost);
 
         player1.playCard(0, board,"");
         player1.playCard(0, board,"");
@@ -55,15 +55,15 @@ public class MoraleBoostAppliesItsEffectCorrectly {
         Score scorePlayer1 = board.getPlayerScore(player1);
         Score scorePlayer2 = board.getPlayerScore(player2);
 
-        assertTrue(new Score(14).equals(scorePlayer1));
-        assertTrue(new Score(11).equals(scorePlayer2));
+        assertTrue(new Score(14).equals(scorePlayer1), new String("el score debe ser 14 pero es " + scorePlayer1));
+        assertTrue(new Score(11).equals(scorePlayer2), new String("el score debe ser 11 pero es " + scorePlayer1));
 
-        player2.playCard(0, board,"siege");//no toma la section como valida
+        player2.playCard(0, board,"siege");
 
         scorePlayer1 = board.getPlayerScore(player1);
         scorePlayer2 = board.getPlayerScore(player2);
 
-        assertTrue(new Score(14).equals(scorePlayer1));
-        assertTrue(new Score(22).equals(scorePlayer2));
+        assertTrue(new Score(14).equals(scorePlayer1), new String("el score debe ser 14 pero es " + scorePlayer1));
+        assertTrue(new Score(22).equals(scorePlayer2), new String("el score debe ser 22 pero es " + scorePlayer2));
     }
 }

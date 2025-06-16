@@ -58,19 +58,19 @@ public abstract class Section {
     }
     public void clearMoraleBoostEffect() {setBoost(new NormalState());}
 
-    public List<Unit> cardsMaxScore() {
-        List<Unit> toRemove  = new ArrayList<>();
-        if(unitCards.isEmpty()) return toRemove;
-        int max = unitCards.stream().mapToInt(Unit::getScore).filter(unit -> unit >= 0).max().orElse(0);
-
+    public int getPoinOfSection(){
+        if(unitCards.isEmpty()) return 0;
+        int poinOfSection = 0;
+        for(Unit unit : unitCards) poinOfSection = (unit.getScore());
+        return poinOfSection;
+    }
+    public Unit selecCardWhitPoint(int point){
         for (Unit unit : unitCards) {
-            if (unit.getScore() == max){
-                toRemove.add(unit);
+            if(unit.getScore() == point){
+                unitCards.remove(unit);
+                return unit;
             }
         }
-        return toRemove;
-    }
-    public void removeUnits(List<Unit> units) {
-        unitCards.removeAll(units);
+        return null;
     }
 }

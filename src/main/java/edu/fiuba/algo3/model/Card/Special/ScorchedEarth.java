@@ -12,8 +12,6 @@ public class ScorchedEarth extends Special {
 
     @Override
     public void applyInBoard(@NotNull Board board) {
-        for (PlayerField field : board.getAllPlayerFields()){
-            field.aplyScorchedEarthEfect();
-        }
+        board.aplyScorchedEarthEfect();
     }
 }
